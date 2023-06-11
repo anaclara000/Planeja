@@ -1,0 +1,121 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id_usuario         Int            @id @default(autoincrement())
+  nome               String
+  email              String         @unique
+  senha              String
+  raz                String?
+  nomeFantasia       String?
+  cnpj               String?        @unique
+  cpf                String?
+  tipo               String
+  telefone           String
+  tiposEventos       tiposEventos[]
+  servicosPrestados  servicos[]
+  eventos            Eventos[]
+  Parcerias          Parcerias[]
+  conversas          Conversa[]     @relation("participantes")
+  mensagensEnviadas  Mensagem[]     @relation("remetente")
+  mensagensRecebidas Mensagem[]     @relation("destinatario")
+  caminhoImagem      String?
+}
+
+model Conversa {
+  id_conversa   Int        @id @default(autoincrement())
+  participantes Usuario[]  @relation("participantes")
+  mensagens     Mensagem[]
+}
+
+model Mensagem {
+  id_mensagem    Int      @id @default(autoincrement())
+  conteudo       String
+  remetente      Usuario  @relation("remetente", fields: [remetenteId], references: [id_usuario])
+  destinatario   Usuario  @relation("destinatario", fields: [destinatarioId], references: [id_usuario])
+  remetenteId    Int
+  destinatarioId Int
+  conversa       Conversa @relation(fields: [conversaId], references: [id_conversa])
+  conversaId     Int
+}
+
+model Parcerias {
+  id_parceria Int     @id @default(autoincrement())
+  idProdutor  String
+  idCliente   Int
+  tipoEvento  String
+  data_evento String
+  Usuario     Usuario @relation(fields: [idCliente], references: [id_usuario], onDelete: Cascade)
+}
+
+model tiposEventos {
+  id_tiposEvento Int     @id @default(autoincrement())
+  nome           String
+  id_usuario     Int
+  Usuario        Usuario @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade)
+}
+
+model servicos {
+  id_servicos Int     @id @default(autoincrement())
+  nome        String
+  id_usuario  Int
+  Usuario     Usuario @relation(fields: [id_usuario], references: [id_usuario], onDelete: Cascade)
+}
+
+model Eventos {
+  id_eventos       Int               @id @default(autoincrement())
+  idUsuario        Int
+  cnpjProdutor     String?
+  tipo_evento      String?
+  descricao        String?
+  nome_evento      String?
+  endereco_evento  String?
+  data_hora_inicio String?
+  data_hora_fim    String?
+  status           String?
+  produtor         Usuario           @relation(fields: [idUsuario], references: [id_usuario])
+  lista            listaConvidados[]
+  locacao          Locacoes[]
+  fornecedor       Fornecedor[]
+}
+
+model listaConvidados {
+  id_convidado Int     @id @default(autoincrement())
+  nome         String
+  telefone     String
+  idEvento     Int
+  Evento       Eventos @relation(fields: [idEvento], references: [id_eventos])
+}
+
+model Locacoes {
+  id_locacoes Int     @id @default(autoincrement())
+  tipo        String
+  nome        String
+  endereco    String?
+  descricao   String?
+  telefone    String?
+  email       String?
+  valor       Float
+  idEvento    Int
+  Evento      Eventos @relation(fields: [idEvento], references: [id_eventos])
+}
+
+model Fornecedor {
+  id_fornecedor Int     @id @default(autoincrement())
+  nome          String
+  descricao     String?
+  tipo          String
+  telefone      String
+  valor         Float
+  idEvento      Int
+  Evento        Eventos @relation(fields: [idEvento], references: [id_eventos])
+}

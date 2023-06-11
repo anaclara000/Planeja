@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,500;1,600&display=swap');
+
+@font-face {
+    font-family: 'Tumbly';
+    src: url('../assets/fonts/tumbly.otf') format('truetype');
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins';
+}
+
+h1 {
+    text-align: center;
+}
+
+nav {
+    background-color: black;
+
+}
+
+nav h1 {
+    font-family: 'Tumbly';
+    font-size: 25pt;
+}
+
+.model {
+    visibility: hidden;
+    display: none;
+}
+
+.cont_nav {
+    padding: 25px;
+    display: flex;
+    width: 60%;
+    margin: auto;
+    justify-content: space-between;
+
+    color: white;
+
+}
+
+ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+}
+
+ul li {
+    text-decoration: none;
+    margin-left: 40px;
+    font-size: 15pt;
+}
+
+.cont_user i {
+    font-size: 27pt;
+    margin-top: 5px;
+}
+
+.cont_banner_inf {
+    margin-top: -10%;
+    background-image: url('../img/aleksandr-popov-vCbKwN2IXT4-unsplash.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+
+
+}
+
+#container {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 2%;
+}
+
+.cont_title_banner_initial {
+    width: 40%;
+    margin-top: -20px;
+
+}
+
+.cont_title_banner_initial h1 {
+    text-align: center;
+    color: white;
+    font-size: 30pt;
+}
+
+.cont_title_banner_initial p {
+    color: white;
+    text-align: center;
+    line-height: 3vh;
+
+}
+
+
+.cont_btn_banner_initial {
+    width: 17%;
+    margin: 0% auto;
+}
+
+.cards_events {
+    width: 100%;
+    height: 70vh;
+    margin: 0 auto;
+    margin-top: 20px;
+    padding: 10px;
+}
+
+
+
+.section_events {
+    display: flex;
+    color: white;
+    width: 35%;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+.section_events p:hover {
+    cursor: pointer;
+    /* border-bottom: 1px solid white; */
+    font-weight: 600;
+}
+
+.cards_events hr {
+    width: 90%;
+    margin: 0% auto;
+    margin-bottom: 5px;
+}
+
+.cont_events {
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid black;
+    height: 70vh;
+}
+
+.eventos {
+    display: flex;
+    background-color: transparent;
+    text-align: center;
+    width: 55%;
+    height: 20vh;
+    background-color: #212124;
+    border-radius: 10px;
+    color: white;
+    margin-top: 10px;
+    margin-bottom: 1%;
+}
+
+.inf_events {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+
+}
+.inf_events div {
+    display: flex;
+    align-items: center;
+    margin-bottom: 2.5%;  
+}
+
+.date_hour_details {
+    margin-top: 0px;
+    font-size: 10pt;
+}
+
+.inf_events div p {
+    font-size: 10pt;
+}
+.icon_location {
+    width: 5%;
+    margin-right: 8px;
+}
+
+.img_date {
+    width: 35%;
+}
+
+.card_img {
+    width: 100%;
+    height: 97%;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-left: 0px;
+}
+
+.eventos h2 {
+    font-size: 100%;
+}
+
+
+
+.cont_img_evento {
+    width: 60%;
+    margin-bottom: -6px;
+}
+
+/* .eventos button {
+    padding: 2px 25px;
+    border-radius: 20px;
+    border: none;
+    background-color: #212121;
+    color: white;
+    margin-top: 5px;
+} */
+
+.productor {}
+
+.status {
+    border-radius: 50px;
+    width: 70%;
+    font-size: 11pt;
+    margin: 5% auto;
+    background-color: rgb(94, 94, 94);
+}
+
+.cont_btn_criar_eventos {
+    width: 90%;
+    display: flex;
+    margin-left: -40px;
+    margin-top: 40px;
+    justify-content: flex-end;
+    margin-bottom: 2%;
+
+}
+
+.btn_criar_eventos {
+    padding: 5px 30px;
+    background-color: green;
+    border-radius: 100px;
+    color: white;
+    border: 0;
+}
+
+.btn_conferir_evento  {
+    width: 25%;
+    height: 17%;
+    border: none;
+    border-radius: 50px;
+    margin-top: 4%;
+    margin-left: 5%;
+}
+.informacoes h2 {
+    text-align: center;
+}
+
+.informacoes h2:nth-child(3) {
+    margin-top: 10%;
+
+}
+/* .informacoes div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 5%;
+} */
+
+.cont_divs {
+    margin-bottom: 25%;
+}
+
+.menu_lateral_inf ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.menu_lateral_inf div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    font-size: 13pt;
+
+}
+
+.menu_lateral_inf div i {
+}

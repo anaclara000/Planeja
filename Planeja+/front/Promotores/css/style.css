@@ -1,0 +1,223 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    /* background: rgb(240, 241, 247); */
+    /* background: linear-gradient(26deg, rgba(255, 255, 255, 0) 51%, rgba(60, 53, 88, 0.9) 30%, rgba(60, 53, 88, 0.9) 100%); */
+    background-color: #f0f1f7;
+}
+
+.carrosel {
+    height: 48%;
+    width: 75%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    background-image: url(../assets/banner.png);
+    background-size: cover;
+}
+.itens-banner{
+    display: flex;
+    flex-direction: column;
+    margin-left: 15%;
+}
+.banner-tex-evento{
+    font-weight: bold;
+    /* text-decoration: underline; */
+}
+.banner-redes-sociais{
+    display: flex;
+    align-items: center;
+}
+.banner-redes-sociais>i{
+    margin-right: 1.5%;
+    font-size: 18px;
+}
+
+.banner-redes-sociais>span{
+    font-size: 18px;
+}
+.container {
+    height: 43%;
+    width: 75%;
+}
+.itens-banner> span, .dec-itens-banner{
+    font-size: 70px;
+    font-weight: 500;
+}
+.itens-banner>span, .itens-banner>div>span , .itens-banner>div>i{
+    color:#fff;
+}
+
+.card-body>img {
+    width: 16vw;
+    height: 16vw;
+    border-radius: 10% 10% 0% 0%;
+    transition: transform 0.9s ease;
+    overflow: hidden;
+}
+
+.card-body>img:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+    border-radius: 10%;
+    transition: transform 0.9s ease, border-radius 0.9s ease;
+}
+
+.cards {
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    margin: 1%;
+}
+
+.card-body {
+    margin: 1%;
+    width: 22%;
+}
+
+.conteudo {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 17vh;
+    background-color: #ffffff;
+    margin-top: -1%;
+    border-radius: 0% 0% 25px 25px;
+    padding: 3%;
+}
+
+.nome-promotor {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.desc-promotor {
+    margin-top: 1%;
+}
+
+.avaliacao {
+    align-items: center;
+    text-align: center;
+    margin-top: 3%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.btn-conferir {
+    padding: 10px;
+    color: white;
+    background: rgb(60, 53, 88);
+    background: linear-gradient(55deg, rgba(60, 53, 88, 0.9) 0%, rgba(37, 39, 44, 0.9) 100%);
+    border-radius: 10px;
+    border: none;
+    transition: transform 0.4s ease;
+}
+
+.btn-conferir:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.estrela-avaliacao {
+    color: #f2c900;
+    font-weight: 600;
+}
+
+.tipo {
+    position: absolute;
+    background-color: #fdfdfc;
+    margin-left: 7.5%;
+    margin-top: 0.8%;
+    padding: 7px;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    width: 7vw;
+    justify-content: center;
+}
+
+.tipo>i {
+    margin-right: 2%;
+}
+
+
+/* INPUT DE BUSCA */
+.cont-filtro {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 70%;
+    height: 5%;
+    margin-top: 1%;
+}
+
+.sub-cont-busc {
+    display: flex;
+    font-size: 20px;
+    color: white;
+    align-items: center;
+    color: #000000;
+    display: inline-block;
+    background-image: linear-gradient(to right, #202D72, #03051A);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.sub-cont-busc>i {
+    margin-left: 10px;
+}
+
+.input-busca {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 10px;
+    padding: 5px;
+    width: 50%;
+}
+
+.input-busca>input {
+    border: none;
+    width: 80%;
+    background-color: transparent;
+    outline: none;
+}
+
+.bx-search {
+    color: #C18AF0;
+    font-size: 20px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.bx-search:hover {
+    color: white;
+    background-image: linear-gradient(to right, #ff00cc, #3333ff);
+}
+
+.desc-cont-busca {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    margin: 1%;
+}
+
+.desc-cont-busca>span {
+    margin-top: 3%;
+}

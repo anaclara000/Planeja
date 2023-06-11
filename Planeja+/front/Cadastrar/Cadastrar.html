@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planeja+ - Cadastrar-se</title>
+    <link rel="stylesheet" href="css/cadastrar.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<script>
+    window.localStorage.removeItem("info")
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+
+
+<body>
+
+    <div id="container">
+        <div class="login-cont">
+
+            <div class="cont-select-options select">
+
+                <div class="cont-title">
+                    <h1>Selecione uma Opção</h1>
+                </div>
+
+            </div>
+
+            <div class="cont-login produtor model">
+
+                <div class="cont-img-banner">
+
+                    <img src="img/banner_productor.png" alt="">
+
+                </div>
+
+                <div class="cont-forms">
+
+                    <div class="cont-title">
+                        <h1>Cadastro - Produtor</h1>
+                        <!-- <hr> -->
+                    </div>
+
+                    <form>
+
+                        <div class="inps_senha">
+
+                            <div>
+
+                                <div class="single-input">
+                                    <label for="text" class="label_test" style="top: -30%;">Razão Social</label>
+                                    <input type="text" class="input" disabled="" id="razao" required>
+
+                                </div>
+                                <p style="text-align: center; color: red " class="err erro_raz">Razão Social não
+                                    Preenchido</p>
+                            </div>
+
+                            <div>
+
+                                <div class="single-input">
+                                    <input type="text" class="input" id="email" required>
+                                    <label for="email">Email</label>
+
+                                </div>
+
+                                <p style="text-align: center; color: red " class="err erro_email"></p>
+                            </div>
+                        </div>
+
+                        <div class="inps_senha">
+
+                            <div>
+
+                                <div class="single-input">
+                                    <input type="password" class="input" id="senha" required>
+                                    <label for="senha">Senha</label>
+                                </div>
+
+                                <p style="text-align: center; color: red " class="err erro_senha">Senha não Preenchida
+                                </p>
+                            </div>
+
+                            <div>
+                                <div class="single-input">
+                                    <input type="password" class="input" id="confirmar_senha" required>
+                                    <label for="senha">Confirmar Senha</label>
+                                </div>
+                                <p style="text-align: center; color: red " class="err erro_confirmar_senha">Confirmar
+                                    Senha Vazia</p>
+
+                            </div>
+                        </div>
+
+                        <div class="inps_senha">
+
+                            <div>
+                                <div class="single-input">
+                                    <input type="text" class="input" id="nome_fantasia" required>
+                                    <label for="text">Nome Fantasia</label>
+                                </div>
+                                <p style="text-align: center; color: red " class="err erro_nome_fantasia"></p>
+
+                            </div>
+
+                            <div>
+                                <div class="single-input">
+                                    <label for="text" class="label_test" style="top: -30%;">CNPJ</label>
+                                    <input type="text" class="input" disabled="" id="cnpj" required>
+                                </div>
+                                <p style="text-align: center; color: red " class="err erro_cnpj"></p>
+
+                            </div>
+                        </div>
+
+                        <div class="inps_senha">
+                            <div>
+
+                                <div class="single-input">
+                                    <label for="text" class="label_test" style="top: -30%;">Contato</label>
+                                    <input type="text" class="input" id="telefone" required>
+                                </div>
+
+                                <p style="text-align: center; color: red " class="err erro_telefone">Telefone Vazio</p>
+
+
+                            </div>
+                        </div>
+
+
+
+                    </form>
+
+                    <div class="cont-btn-logar">
+                        <button class="button-login" onclick="SeguirEtapa()">Seguinte
+                        </button>
+                    </div>
+
+
+                    <div class="cadastrar-cont">
+                        <a href="../Login/login.html">Fazer Login</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="cont-login options_produtor model">
+
+                <div class="cont-img-banner">
+
+                    <img src="img/services_icon.png" alt="">
+
+                </div>
+
+                <div class="cont-inserir-servicos-eventos">
+
+                    <div class="cont-title">
+                        <h1>Inserir Serviços</h1>
+                        <!-- <hr> -->
+                    </div>
+
+                    <div class="inps_senha">
+
+                        <div class="single-input adicionar adicionar_tipos_eventos">
+
+                            <div style="width: 50%; margin-top: 1%;">
+
+                                <input maxlength="30" type="text" placeholder="Adicionar Eventos Realizados"
+                                    class="input" id="adicionar_tipos_eventos" required>
+                                <!-- <label for="senha"></label> -->
+                            </div>
+
+                            <img class="icon_add" onclick="InserirEventosRealizados()" src="img/icons/add.png" alt="">
+
+                        </div>
+
+                        <a href="../Home/index.html"></a>
+
+                    </div>
+
+                    <p style="text-align: center; color: red; margin-top: 1%;"
+                        class="err erro_adicionar_tipos_eventos_vazios"></p>
+
+                    <div class="tipos_eventos_realizados">
+
+                    </div>
+
+
+
+                    <div class="inps_senha">
+
+                        <div class="single-input adicionar adicionar_servicos">
+
+                            <div style="width: 50%;">
+
+                                <input type="text" placeholder="Adicionar Serviços Fornecidos" class="input"
+                                    id="input_servicos" required>
+                                <!-- <label for="senha"></label> -->
+                            </div>
+
+                            <img class="icon_add" onclick="AdicionarServicos()" src="img/icons/add.png" alt="">
+
+                        </div>
+                    </div>
+
+
+                    <p style="text-align: center; color: red; margin-top: 1%;" class="err erro_servicoes_prestados"></p>
+
+                    <div class="servicoes_prestados">
+
+                    </div>
+
+                    <div class="cont-btn-logar">
+                        <button class="button-login" onclick="CadastrarProdutor()">Confirmar
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="cont-login usuario model">
+
+                <div class="cont-img-banner">
+
+                    <img src="img/register_icon.png" alt="">
+
+                </div>
+
+                <div>
+
+                    <div class="cont-title">
+                        <h1>Cadastro - Usuario</h1>
+                        <!-- <hr> -->
+                    </div>
+
+                    <form class="forms_user">
+
+                        <div class="inps_senha">
+
+                            <div class="inps">
+
+                                <div class="single-input">
+                                    <input type="text" class="input" id="nomeUser" required>
+                                    <label for="text">Nome Completo</label>
+
+                                </div>
+                                <p style="text-align: center; color: red " class="err erro_nome_user">Nome não
+                                    Preenchido</p>
+                            </div>
+
+
+                        </div>
+
+                        <div class="inps_senha">
+
+                            <div class="inps">
+                                <div class="single-input">
+                                    <input type="text" class="input" id="emailUser" required>
+                                    <label for="email">Email</label>
+                                </div>
+
+                                <p style="text-align: center; color: red" class="err erro_email_user">Email não
+                                    Preenchido
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="inps_senha">
+
+                            <div class="inps">
+                                <div class="single-input">
+                                    <input type="password" class="input" id="senhaUser" required>
+                                    <label for="senha">Senha</label>
+                                </div>
+
+                                <p style="text-align: center; color: red " class="err erro_senha_user">Senha não
+                                    Preenchida
+                                </p>
+                            </div>
+
+                        </div>
+
+                        <div class="inps_senha">
+                            <div class="inps">
+                                <div class="single-input">
+                                    <input type="password" class="input" id="confirmar_senhaUser" required>
+                                    <label for="senha">Confirmar Senha</label>
+                                </div>
+                                <p style="text-align: center; color: red " class="err erro_confirmar_senha">
+                                    Confirmar
+                                    Senha Vazia</p>
+
+                            </div>
+                        </div>
+
+
+
+                        <div class="inps_senha cpf_inps">
+
+                            <div>
+                                <div class="single-input">
+                                    <input type="text" class="input" id="cpfUser" required>
+                                    <label for="text">CPF</label>
+                                </div>
+                                <p style="text-align: center; color: red " class="err erro_cpf">CPF Vazio</p>
+
+                            </div>
+                        </div>
+
+                    </form>
+
+                    <div class="cont-btn-logar">
+                        <button class="button-login" onclick="CadastrarUsuario()">Cadastrar
+                        </button>
+                    </div>
+
+                    <div class="outros-meios-cadastros_title">
+
+                        <p>Ja Possui conta?</p>
+                    </div>
+
+                    <div class="cadastrar-cont">
+                        <a href="../Login/login.html">Fazer Login</a>
+                    </div>
+                </div>
+
+
+            </div>
+
+        </div>
+
+        <div class="teste">
+
+            <div class="cont_select_options">
+
+                <div onclick="SelecionarOpcao(this)">
+                    <h4 class="title">Usuario</h4>
+
+                    <img src="img/user_icon.png" alt="">
+
+                </div>
+
+                <div onclick="SelecionarOpcao(this)">
+                    <h4 class="title">Produtor</h4>
+                    <img src="img/productor_icon.png" alt="">
+
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="cnpj model">
+
+            <div class="cont-img-banner">
+
+                <img src="img/Authentication_icon.png" alt="">
+
+            </div>
+
+
+            <div class="cnpj_cont">
+                <div>
+
+                    <div class="cont-title">
+                        <h3 style="font-family: 'Tumbly';">Insira o CNPJ</h3>
+                        <!-- <hr> -->
+                    </div>
+
+                    <div class="single">
+                        <div class="single-input">
+                            <input type="text" class="input" id="cnpj_inp" required>
+                            <label for="text">CNPJ</label>
+                        </div>
+                        <p style="text-align: center; color: red; margin-top: 5px;" class="err erro_cnpj"></p>
+
+                    </div>
+
+                </div>
+
+                <div class="cont-btn-logar">
+                    <button class="button-login" onclick="VerificarCNPJ()">Confirmar
+                    </button>
+                </div>
+
+                <div class="outros-meios-cadastros_title" style="margin-top: 30px;">
+
+                    <p>Ja Possui conta?</p>
+                </div>
+
+                <div class="cadastrar-cont" style="margin-top: 50px;">
+                    <a style="width: 30%; margin: 2% auto;" href="../Login/login.html">Fazer Login!</a>
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- CLONES -->
+        <div class="servicos model">
+            <p>
+                <span class="title_service"> Serviço Teste</span>
+
+                <i class='bx bx-x' onclick="RemoverServicos(this)"></i>
+
+            </p>
+        </div>
+
+        <div class="eventos_realizados model">
+            <p>
+                <span class="title_eventos_realizados"> Serviço Teste</span>
+
+                <i class='bx bx-x' onclick="RemoverEventosRelizados(this)"></i>
+
+            </p>
+        </div>
+
+
+    </div>
+
+</body>
+
+<script src="js/cadastrarProdutor.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script type="text/javascript">
+    $("#cnpj_inp").mask("00.000.000/0000-00");
+    $("#telefone").mask("(00) 00000-0000");
+</script>
+
+</html>

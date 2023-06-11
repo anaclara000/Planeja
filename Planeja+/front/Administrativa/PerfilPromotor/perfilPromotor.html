@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="../estrutura.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+
+    <title>Perfil Promotor</title>
+</head>
+<header>
+    <nav class="menu-lateral">
+
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+
+            <h2 class="txt-link title_menu">Planeja+</h2>
+        </div><!--btn-expandir-->
+
+        <ul>
+            <li class="item-menu sec_promotor" style="display: none;">
+                <a href="../PainelControle/index.html">
+                    <p class="icon"><i class="bi bi-columns-gap"></i></p>
+                    <p class="txt-link">Dashboard</p>
+                </a>
+            </li>
+
+            <li class="item-menu ativo">
+                <a href="../Promotores/promotores.html">
+                    <p class="icon"><i class="bi bi-compass-fill"></i>
+
+                    </p>
+                    <p class="txt-link">Promotores</p>
+                </a>
+
+            </li>
+
+            <li class="item-menu">
+                <a href="../Parcerias/index.html">
+                    <p class="icon"><i class="bi bi-people-fill"></i>
+                    </p>
+                    <p class="txt-link">Parcerias</p>
+                </a>
+
+            </li>
+            <li class="item-menu">
+                <a href="../Eventos/index.html">
+                    <p class="icon"><i class="bi bi-calendar-event"></i></p>
+                    <p class="txt-link">Perfil</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Convidados/index.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Convidado</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Login/login.html">
+                    <p class="icon"><i class="bi bi-box-arrow-right"></i>
+                    </p>
+                    <p class="txt-link">Sair</p>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+</header>
+
+<body onload="Carregar()">
+
+    <div class="carrosel">
+        <div class="itens-banner">
+            <span>O melhor app</span>
+            <div class="dec-itens-banner">
+                <span>de</span>
+                <span class="banner-tex-evento">eventos!</span>
+            </div>
+
+            <div class="banner-redes-sociais">
+                <i class='bx bxl-facebook-circle'></i>
+                <i class='bx bxl-instagram-alt'></i>
+                <i class='bx bxl-twitter'></i>
+                <span>@planeja+</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal_adicionar_editar_tipo_eventos model">
+
+        <p class="id_tipo_evento" style="display: none;"></p>
+
+
+        <h3>Tipo de Eventos</h3>
+
+
+        <hr>
+
+        <div class="btn_adicionar_foto">
+            <button>Adicionar Foto</button>
+        </div>
+
+        <div class="inps_modal_adicionar">
+
+            <div style="display: flex; justify-content: center; width: 100%; align-items: center;">
+                <p>Titulo do Evento</p>
+
+                <span class="err_tipo_servico"
+                    style="font-size: 13pt; color: red; margin-left: 10px; display: none;"></span>
+            </div>
+
+            <input class="titulo_evento_modal" type="text">
+        </div>
+
+        <div class="cont_btn">
+
+            <button class="btn_cancelar_modal" onclick="Cancelar2()">Cancelar</button>
+            <button onclick="CadastrarTipoEvento()" class="btn_confirmar_modal">Confirmar</button>
+            <button onclick="EditarModal()" class="btn_editar_modal">Editar Modal</button>
+        </div>
+
+        <img class="icon_lixo" onclick="DeletarTipoEvento()" src="assets/lixo.png" alt="">
+
+
+    </div>
+
+    <div class="modal_adicionar_locacoes model">
+
+        <p class="id_tipo_locacoes" style="display: none;"></p>
+
+        <h3>Locações</h3>
+
+        <hr>
+
+        <div class="btn_adicionar_foto">
+            <button>Adicionar Foto</button>
+        </div>
+
+        <div class="inps_modal_adicionar">
+
+            <div style="display: flex; justify-content: center; width: 100%; align-items: center;">
+                <p>Nome da Locação</p>
+
+                <span class="err_nome_locacao"
+                    style="font-size: 13pt; color: red; margin-left: 10px; display: none;"></span>
+            </div>
+
+            <input class="nome_locacao_modal" type="text">
+        </div>
+
+        <div class="inps_modal_adicionar">
+
+            <div style="display: flex; justify-content: center; width: 100%; align-items: center;">
+                <p>Endereço da Locação</p>
+
+                <span class="err_endereco_locacao"
+                    style="font-size: 13pt; color: red; margin-left: 10px; display: none;"></span>
+            </div>
+
+            <input class="endereco_locacao_modal" type="text">
+        </div>
+
+        <div class="cont_btn">
+
+            <button class="btn_cancelar_modal" onclick="Cancelar4()">Cancelar</button>
+            <button onclick="CadastrarLocacoes()" class="btn_confirmar_locacao_modal">Confirmar</button>
+            <button onclick="EditarModalLocacoes()" class="btn_editar_locacao_modal">Editar Locação</button>
+        </div>
+
+        <img class="icon_lixo_locacao" onclick="DeletarLocacao()" src="assets/lixo.png" alt="">
+
+
+    </div>
+
+    <div class="modal_adicionar_editar_servicos model">
+
+        <p class="id_tipo_evento" style="display: none;"></p>
+
+        <h3>Serviço Fornecido</h3>
+
+        <hr>
+
+        <div class="inps_modal_adicionar">
+
+            <div style="display: flex; justify-content: center; width: 100%; align-items: center;">
+                <p>Nome do Serviço</p>
+                <span class="err_nome_servico"
+                    style="font-size: 13pt; color: red; margin-left: 10px; display: none;"></span>
+            </div>
+
+            <input class="titulo_servicos_modal" type="text">
+        </div>
+
+        <div class="cont_btn">
+
+            <button class="btn_cancelar_modal" onclick="Cancelar3()">Cancelar</button>
+            <button onclick="CadastrarServicos()" class="btn_confirmar_servicos_modal">Confirmar</button>
+            <button onclick="EditarModalServiços()" class="btn_editar_servicos_modal">Editar Modal</button>
+        </div>
+
+        <img class="icon_lixo_servico" onclick="DeletarServico()" src="assets/lixo.png" alt="">
+
+    </div>
+
+
+
+    <div class="container">
+        <div class="cont-info-promotor">
+            <div class="info-promotor">
+                <img src="https://marketplace.canva.com/EAFMNm9ybqQ/1/0/1600w/canva-gold-luxury-initial-circle-logo-qRQJCijq_Jw.jpg"
+                    alt="">
+                <div class="cont-nome">
+                    <div class="cont-nome-ava">
+                        <span class="nome-promotor">Lilica Repilica</span>
+                        <i class='bx bxs-badge-check'></i>
+                        <!-- <i class='bx bxs-star'></i> -->
+                        <!-- <span class="avaliacao-promotor">4.5</span> -->
+                    </div>
+
+                    <div class="insta">
+                        <img src="./assets/instagram.png" alt="">
+                        <span>@lilica</span>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <div class="div-btn aberta" style="display: none;">
+                <button class="btn-parceria" onclick="FecharParceria()">Fechar parceria</button>
+            </div>
+
+            <div class="div-btn pendente" style="display: none;">
+                <img src="assets/icon_pendente.png" alt="">
+                <p>Solicitação Pendente. . . . </p>
+            </div>
+
+            <div class="div-btn fechada" style="display: none;">
+                <img src="assets/certo_icon.png" alt="">
+                <p>Solicitação Aprovada</p>
+            </div>
+
+
+        </div>
+        <div class="contato">
+
+            <a href="assets/foto_padrao.jpeg"></a>
+            <div class="galeria">
+                <div class="text-galeria">
+                    <span>Galeria de fotos</span>
+                    <i class='bx bxs-camera'></i>
+                </div>
+                <img src="assets/foto_padrao" alt="">
+                <div class="cont-fotos">
+                    <div class="fotos-cont-body" style="display: none;">
+                        <p class="id_tipo_evento" style="display: none;"></p>
+
+                        <img class="foto_card"
+                            src="https://www.petalasnoivas.com.br/wp-content/uploads/2022/01/CASAMENTO-AO-AR-LIVRE-e1641468140314.jpg"
+                            alt="">
+                        <div class="text-fotos">
+                            <span class="titulo-foto">Casamentos</span>
+                            <!-- <span>Cras posuere ac augue ac luctus. Nulla facilisi.</span> -->
+                            <img class="btn_acao1" class="img_editar_tipo_eventos" style="display: none;"
+                                onclick="AbrirModalTipoEvento(this)" src="assets/editar.png" alt="">
+                        </div>
+                    </div>
+                    <!-- <div class="fotos-cont-body">
+                        <img src="https://i.pinimg.com/originals/50/68/52/506852f3cf6b7d709f25474e9dd4f32b.jpg" alt="">
+                        <div class="text-fotos">
+                            <span class="titulo-foto">Aniversários</span>
+                            <span>Cras posuere ac augue ac luctus. Nulla facilisi.</span>
+
+                        </div>
+                    </div>
+                    <div class="fotos-cont-body">
+                        <img src="https://i.pinimg.com/736x/c5/8c/33/c58c3335eae1d7e29693ec6e35c75b5b.jpg" alt="">
+                        <div class="text-fotos">
+                            <span class="titulo-foto">Formaturas</span>
+                            <span>Cras posuere ac augue ac luctus. Nulla facilisi.</span>
+
+                        </div>
+                    </div> -->
+                </div>
+
+                <div class="cont_btn_adicionar_editar_eventos">
+
+                    <button class="btn_acao2" onclick="AbrirModalTipoEventoCadastrar()" style="display: none;">Adicionar
+                        Eventos</button>
+                </div>
+
+            </div>
+
+            <div class="quem-somos">
+                <div class="text-quem-somos">
+                    <span>Quem Somos</span>
+                </div>
+                <div class="desc-quem-somos">
+                    <div class="cont-desc">
+                        <span>Empresa a mais de 12 anos no mercado, realizamos diversos serviços para cada necessidade
+                            de um bom evento.
+                            Temos prazer em dizer que trabalhamos com amor e perceveranca. </span>
+
+                        <div class="contato-promotor">
+                            <span>Contato</span>
+                            <span>Tel:<span class="tel"> (19) 99678-8757</span></span>
+                            <span>Email:<span class="email"> lilica@gmail.com</span></span>
+                            <div class="cont_endereco">
+                                <span>Endereço</span>
+                                <span>Rua horlando, Centro | Jaguariúna - SP</span>
+                            </div>
+
+
+                            <div class="div-btn a2" onclick="FecharParceria()"
+                                style="display: flex; width: 60%; font-size: 12pt; cursor: pointer;">
+                                <p>Fechar parceria</p>
+                            </div>
+
+                            <div class="div-btn p2" style="display: none;">
+                                <img src="assets/icon_pendente.png" alt="">
+                                <p>Solicitação Pendente. . . . </p>
+                            </div>
+
+                            <div class="div-btn f2" style="display: none;">
+                                <img src="assets/certo_icon.png" alt="">
+                                <p>Solicitação Aprovada</p>
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="foto-quem-somos">
+                        <img src="https://www.contabilizei.com.br/contabilidade-online/wp-content/uploads/2020/09/ser-empresario-mulher-rindo-scaled-e1599161867555.jpg"
+                            alt="">
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="servicos">
+                <div class="text-cont-servicos">
+                    <span>Serviços prestados</span>
+                </div>
+                <div class="cont-servicos">
+                    <div class="c_servico" style="display: none;">
+                        <span class="servico"> Buffet</span>
+                        <img class="btn_acao3" class="img_editar_servicos" style="display: none;"
+                            onclick="AbrirModalTipoServicos(this)" src="assets/editar.png" alt="">
+                        <span class="id_servico" style="display: none;"> </span>
+                    </div>
+                </div>
+
+                <div class="cont_btn_adicionar_editar_eventos">
+
+                    <button class="btn_acao4" onclick="AbrirModalTipoServicosCadastrar()"
+                        style="display: none;">Adicionar
+                        Serviços</button>
+
+                </div>
+            </div>
+
+            <div class="locacoes">
+                <div class="text-galeria">
+                    <span>Locações Fornecidas</span>
+                </div>
+                <img src="assets/foto_padrao" alt="">
+
+                <div class="cont-fotos-locacoes">
+                    <div class="fotos-cont-body-locacoes" style="display: none;">
+                        <p class="id_locacoes" style="display: none;"></p>
+
+                        <img class="foto_card_locacoes"
+                            src="https://www.petalasnoivas.com.br/wp-content/uploads/2022/01/CASAMENTO-AO-AR-LIVRE-e1641468140314.jpg"
+                            alt="">
+                        <div class="text-fotos-locacoes">
+                            <span class="titulo-foto-locacoes">Casamentos</span>
+
+                            <p class="endereco-locacoes"></p>
+                            <!-- <span>Cras posuere ac augue ac luctus. Nulla facilisi.</span> -->
+                            <img class="btn_acao5" class="img_editar_tipo_eventos" style="display: none;"
+                                onclick="AbrirModalLocacoes(this)" src="assets/editar.png" alt="">
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+                <div class="cont_btn_adicionar_editar_eventos">
+                    <button class="btn_acao6" onclick="AbrirModaLocacoesCadastrar()" style="display: none;">Adicionar
+                        Locacoes</button>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="modal_fechar_parceria" style="display: none;">
+
+            <h2>Fechar Parceria</h2>
+
+            <hr>
+            <div class="inps">
+
+                <div>
+                    <p>Tipo do Evento</p>
+                    <p style="color: red; display: none;" class="err_tipo_evento"> Erro Tipo Evento</p>
+                </div>
+
+                <div>
+
+                    <img src="assets/calendario_icon.png" alt="">
+                    <input placeholder="Insira o tipo do evento. . . ." class="tipo_evento_inp" type="text">
+                </div>
+
+            </div>
+
+            <div class="inps">
+
+                <div>
+                    <p>Data Inicio do Evento</p>
+                    <p style="color: red; display: none" class="err_data_evento"> Erro Data Evento</p>
+                </div>
+
+                <div>
+
+                    <img src="" alt="">
+                    <input class="inp_data" type="datetime-local">
+                </div>
+
+            </div>
+
+            <div class="cont_btn">
+                <button onclick="Cancelar()">Cancelar</button>
+                <button onclick="ConfirmarParceria()">Confirmar</button>
+            </div>
+        </div>
+
+
+
+    </div>
+
+    </div>
+
+
+
+
+</body>
+
+
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="./js/scrpt.js"></script>
+
+</html>
