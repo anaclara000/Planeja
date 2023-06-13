@@ -296,9 +296,10 @@ var tipo_evento
 var id_evento
 function AbrirModal(e) {
 
-    var parceria = e.parentNode.parentNode.querySelector('.id_parceria').innerHTML
 
-    console.log(parceria);
+
+    var parceria = e.parentNode.querySelector('.id_parceria').innerHTML
+
     parcerias.forEach(p => {
         if (p.id_parceria == parceria) {
 
@@ -309,6 +310,8 @@ function AbrirModal(e) {
 
             console.log(p);
             usuarios.forEach(u => {
+
+
 
                 if (u.id_usuario == p.idCliente) {
 
@@ -333,34 +336,24 @@ function AbrirModal(e) {
             if (p.status == "Fechada") {
 
                 document.querySelector('.btn_confirmar_parceria').classList.add('model')
-                document.querySelector('.btn_conferir_evento').classList.add('model')
                 document.querySelector('.btn_criar_eventos_p_parceria').classList.remove('model')
             }
 
-            else if (p.status == "Pendente") {
+            console.log(lista_eventos);
 
-                console.log('entrou');
-                document.querySelector('.btn_confirmar_parceria').classList.remove('model')
-                document.querySelector('.btn_criar_eventos_p_parceria').classList.add('model')
-                document.querySelector('.btn_conferir_evento').classList.add('model')
+            lista_eventos.forEach(e => {
 
-            }
-            else {
-                lista_eventos.forEach(e => {
+                console.log(p.idCliente, e.idUsuario, e.status);
+                if (p.idCliente == e.idUsuario && e.status == "Aberto") {
 
+                    id_evento = e.id_eventos
+                    document.querySelector('.btn_confirmar_parceria').classList.add('model')
+                    document.querySelector('.btn_criar_eventos_p_parceria').classList.add('model')
+                    document.querySelector('.btn_conferir_evento').classList.remove('model')
 
-                    if (p.idCliente == e.idUsuario && e.status == "Aberto") {
+                }
 
-                        id_evento = e.id_eventos
-                        document.querySelector('.btn_confirmar_parceria').classList.add('model')
-                        document.querySelector('.btn_criar_eventos_p_parceria').classList.add('model')
-                        document.querySelector('.btn_conferir_evento').classList.remove('model')
-
-                    }
-
-                })
-            }
-
+            })
         }
     })
 
@@ -402,9 +395,6 @@ function CriarEvento(e) {
 
     localStorage.setItem("v_user_evento", JSON.stringify({ "cliente": id_cliente_parceria }));
 
-    localStorage.removeItem("operacao")
-    localStorage.removeItem("v_user")
-
     window.location.href = "../Eventos/CriarEventos/index.html"
 }
 
@@ -445,73 +435,8 @@ function DeletarParceria(e) {
 }
 
 
-// function ConferirEvento() {
+function ConferirEvento() {
 
-//     window.location.href = "../Eventos/Conferir/index.html?id=" + id_evento
-
-// }
-
-function ConferirEvento(e) {
-
-    lista_eventos.forEach(le => {
-
-        if (id_evento == le.id_eventos) {
-
-            window.location.href = "../Eventos/Conferir/index.html?code=" + le.codigo
-        }
-    })
-
+    window.location.href = "../Eventos/Conferir/index.html?id=" + id_evento
 
 }
-
-function AbrirChat(e) {
-    var parceria = e.parentNode.parentNode.querySelector('.id_parceria').innerHTML
-
-    parcerias.forEach(p => {
-
-        if (p.id_parceria == parceria) {
-
-            if (userinfo.id_user == p.idCliente) {
-                localStorage.setItem("remetente", JSON.stringify({ "id_user": userinfo.id_user }));
-                localStorage.setItem("destinatario", JSON.stringify({ "id_user": p.idProdutor }));
-
-            }
-            else {
-                localStorage.setItem("remetente", JSON.stringify({ "id_user": userinfo.id_user }));
-                localStorage.setItem("destinatario", JSON.stringify({ "id_user": p.idCliente }));
-
-            }
-
-            window.location.href = "../../PerfilUser/perfilUser.html"
-
-        }
-    })
-
-}
-
-function AbrirChat2(e) {
-    var parceria = e.parentNode.querySelector('.id_parceria_user').innerHTML
-
-    console.log(parceria);
-    parcerias.forEach(p => {
-
-        if (p.id_parceria == parceria) {
-
-            if (userinfo.id_user == p.idCliente) {
-                localStorage.setItem("remetente", JSON.stringify({ "id_user": userinfo.id_user }));
-                localStorage.setItem("destinatario", JSON.stringify({ "id_user": p.idProdutor }));
-
-            }
-            else {
-                localStorage.setItem("remetente", JSON.stringify({ "id_user": userinfo.id_user }));
-                localStorage.setItem("destinatario", JSON.stringify({ "id_user": p.idCliente }));
-
-            }
-
-            window.location.href = "../../PerfilUser/perfilUser.html"
-
-        }
-    })
-
-}
-

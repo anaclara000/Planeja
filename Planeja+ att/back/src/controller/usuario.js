@@ -46,6 +46,7 @@ const login = async (req, res) => {
           console.log(err2)
           if (err2 == null) {
             res.status(200).json({ "token": token, "uid": usuario.id_usuario, "uname": usuario.nome, "validation": true }).end()
+
           } else {
             res.status(500).json(err2).end()
             console.error(err2)
@@ -102,6 +103,21 @@ const readOne = async (req, res) => {
           id_eventos: true,
         }
       },
+      conversas: {
+        include: {
+          mensagens: true,
+          participantes: {
+            select: {
+              nomeFantasia: true,
+              raz: true,
+              nome: true,
+              caminhoImagem: true,
+              id_usuario: true,
+              desc: true,
+            }
+          }
+        }
+      }
     }
   });
 

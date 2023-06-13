@@ -2,7 +2,6 @@ var uriCard_Locacoes = 'http://localhost:3000/locacoes'
 var uriCard_Eventos = 'http://localhost:3000/eventos'
 var uriCard_Usuarios = 'http://localhost:3000/usuarios'
 var uriCard_Convidados = 'http://localhost:3000/convidados'
-var uriCard_Parcerias = 'http://localhost:3000/parcerias'
 
 var locacoes = []
 var convidado = []
@@ -12,7 +11,6 @@ var listaLocacoes = []
 var listaEventos = []
 var listaUsuarios = []
 var listaConvidados = []
-var listaParcerias = []
 
 var userinfo = JSON.parse(localStorage.getItem("info"));
 
@@ -46,15 +44,6 @@ fetch(uriCard_Convidados, options)
     }
     )
     .catch(err => console.error(err));
-
-fetch(uriCard_Parcerias, options)
-    .then(res => res.json())
-    .then(res => {
-        listaParcerias = res;
-    }
-    )
-    .catch(err => console.error(err));
-
 
 
 function Carregar() {
@@ -100,26 +89,49 @@ function preecherTabelas() {
                 document.querySelector('.details_user').classList.add("model")
                 document.querySelector('.details_promotor').classList.remove('model')
 
-                // document.querySelector('#idUsuarioFoto').innerHTML = lu.id_usuario
-
                 document.querySelector('.nome_fantasia').value = lu.nomeFantasia
-                var nomeFantasia = document.querySelector('.nome_fantasia')
-                nomeFantasia.disabled = true
+
                 document.querySelector('.razao_social').value = lu.raz
+                if (document.querySelector('.img_icon').src = "../../../back/src/" + lu.caminhoImagem == "../../../back/src/" + null) {
+                    document.querySelector('.img_icon').src = "assets/addImg.png"
+                } else {
+                    document.querySelector('.img_icon').src = "../../../back/src/" + lu.caminhoImagem
+                }
+
+
                 document.querySelector('.cnpj').value = lu.cnpj
-                var cnpj = document.querySelector('.cnpj')
-                cnpj.disabled = true
-                var razao = document.querySelector('.razao_social')
-                razao.disabled = true
                 document.querySelector('.email_promotor').value = lu.email
-                var email = document.querySelector('.email_promotor')
-                email.disabled = true
                 document.querySelector('.telefone_promotor').value = lu.telefone
-                var telefone = document.querySelector('.telefone_promotor')
-                telefone.disabled = true
+                if (document.querySelector('.instagram').value = lu.redesocial == null || "") {
+                    document.querySelector('.instagram').value = ""
+                } else {
+                    document.querySelector('.instagram').value = lu.redesocial
+                }
+                if (document.querySelector('.enderecoUser').value = lu.endereco == null || "") {
+                    document.querySelector('.enderecoUser').value = ""
+                } else {
+                    document.querySelector('.enderecoUser').value = lu.endereco
+                }
+
+                if (document.querySelector('.descInicial').value = lu.desc == null || "") {
+                    document.querySelector('.descInicial').value = ""
+                } else {
+                    document.querySelector('.descInicial').value = lu.desc
+                }
+
+                if (document.querySelector('.descPágina').value = lu.descPagina == null || "") {
+                    document.querySelector('.descPágina').value = ""
+                } else {
+                    document.querySelector('.descPágina').value = lu.descPagina
+                }
+
+
+
                 document.querySelector('.status_Evento').value = lu.email
-                document.querySelector('.img_icon').src = "../../../back/src" + lu.caminhoImagem
+
                 document.querySelector('.tables').classList.remove('model')
+
+
             }
             else {
 
@@ -282,16 +294,11 @@ btnExp.addEventListener('click', function () {
 
 
 function Conferir(e) {
+
+
     var evento = e.parentNode.parentNode.querySelector('.id_evento').innerHTML
 
-    listaEventos.forEach(le => {
-
-        if (le.id_eventos == evento) {
-
-            window.location.href = "./Conferir/index.html?code=" + le.codigo
-        }
-    })
-
+    window.location.href = "./Conferir/index.html?id=" + evento
 
 }
 
@@ -535,25 +542,6 @@ function AbrirModalFinalizarEvento(e) {
 
     id_evento_finalizar = id_evento
 
-    listaEventos.forEach(le => {
-
-        if (id_evento == le.id_eventos) {
-
-            document.querySelector(".nome_Evento").innerHTML = le.nome_evento
-
-            if (le.status == "Fechados") {
-
-                document.querySelector('.btn_confirmar').style.display = "none"
-                document.querySelector('.btn_reabrir').style.display = "block"
-            }
-            else {
-                document.querySelector('.btn_confirmar').style.display = "block"
-                document.querySelector('.btn_reabrir').style.display = "none"
-            }
-        }
-
-    })
-
     document.querySelector('.modal_finalizar_evento').classList.remove('model')
 }
 
@@ -563,6 +551,7 @@ function CancelarFinalizarEvento() {
 }
 
 function ConfirmarFinalizarEvento() {
+
 
     var options
     listaEventos.forEach(le => {
@@ -593,71 +582,7 @@ function ConfirmarFinalizarEvento() {
     })
         .then(res => {
             if (res.status == 200) {
-                window.location.reload()
-
-            }
-        })
-
-    listaUsuarios.forEach(lu => {
-
-        if (lu.id_usuario == userinfo.id_user) {
-
-            listaParcerias.forEach(lp => {
-
-                if (lp.cnpjProdutor == u.cnpj && lp.status == "Fechada") {
-
-                    options = JSON.stringify({
-                        "id_parceria": lp.id_parceria,
-                        "idProdutor": userinfo.id_user,
-                        "idCliente": 2,
-                        "tipoEvento": "sadadadad",
-                        "data_evento": "12/06/2023 - 14:11",
-                        "status": "Fechada"
-                    })
-                }
-
-
-
-            })
-        }
-
-
-    })
-
-}
-
-function ConfirmarReabrirEvento() {
-
-    var options
-    listaEventos.forEach(le => {
-
-        if (le.id_eventos == id_evento_finalizar)
-            options = JSON.stringify({
-                "idUsuario": le.idUsuario,
-                "cnpjProdutor": le.cnpjProdutor,
-                "tipo_evento": le.tipo_evento,
-                "descricao": le.descricao,
-                "nome_evento": le.nome_evento,
-                "endereco_evento": le.endereco_evento,
-                "data_hora_inicio": le.data_hora_inicio,
-                "data_hora_fim": le.data_hora_fim,
-                "status": "Aberto"
-            })
-
-    })
-
-    console.log(options);
-
-    fetch("http://localhost:3000/eventos/id/" + id_evento_finalizar, {
-        "method": "PUT",
-        "headers": {
-            "Content-Type": "application/json"
-        },
-        "body": options
-    })
-        .then(res => {
-            if (res.status == 200) {
-                window.location.reload()
+                alert('editado')
             }
         })
 }
@@ -721,6 +646,99 @@ search_btn_promotor.addEventListener('click', () => {
     }
 
 })
+
+function enviarAtt() {
+    let enderecoUser = document.querySelector('.enderecoUser').value
+    let instagram = document.querySelector('.instagram').value
+    let descInicial = document.querySelector('.descInicial').value
+    let descPágina = document.querySelector('.descPágina').value
+    let senhaAntiga = document.querySelector('.senhaAntiga').value
+    let senhaNova = document.querySelector('.senhaNova').value
+    let confirmarSenha = document.querySelector('.confirmarSenha').value
+    listaUsuarios.forEach(user => {
+        console.log(senhaNova)
+        if (senhaNova == "") {
+            let info = JSON.stringify({
+                "desc": descInicial,
+                "endereco": enderecoUser,
+                "descPagina": descPágina,
+                "redesocial": instagram,
+            })
+            fetch('http://localhost:3000/usuarios/id/' + userinfo.id_user, {
+                "method": "PUT",
+                "headers": {
+                    "Content-Type": "application/json"
+                },
+                "body": info
+            })
+                .then(response => response.json())
+                .then(resp => {
+                    window.location.reload()
+                })
+        } else {
+            if (user.senha == senhaAntiga && senhaNova == confirmarSenha) {
+                let info = JSON.stringify({
+                    "desc": descInicial,
+                    "endereco": enderecoUser,
+                    "descPagina": descPágina,
+                    "redesocial": instagram,
+                    "senha": senhaNova,
+                })
+                console.log(senhaAntiga);
+                console.log(senhaNova);
+                console.log(confirmarSenha);
+                fetch('http://localhost:3000/usuarios/id/' + userinfo.id_user, {
+                    "method": "PUT",
+                    "headers": {
+                        "Content-Type": "application/json"
+                    },
+                    "body": info
+                })
+                    .then(response => response.json())
+                    .then(resp => {
+                        window.location.reload()
+                    })
+            } else {
+                var dados = document.querySelector('.dados')
+                dados.classList.remove('model')
+            }
+        }
+
+    })
+
+}
+
+const btnAdicionar = document.getElementById('btn_adicionar');
+const inputFile = document.getElementById('input-file');
+
+btnAdicionar.addEventListener('click', () => {
+    inputFile.click();
+});
+
+inputFile.addEventListener('change', (event) => {
+    const file = event.target.files[0];
+
+    const formData = new FormData();
+    formData.append('img', file);
+    console.log(file)
+    const id_usuario = userinfo.id_user;
+
+    const url = `http://localhost:3000/enviar/${id_usuario}`;
+
+    fetch(url, {
+        method: 'POST',
+        body: formData
+    })
+        .then(response => response.json())
+        .then(data => {
+            // O upload foi concluído com sucesso
+            console.log(data);
+        })
+        .catch(error => {
+            // Ocorreu um erro durante o upload
+            console.error(error);
+        });
+});
 
 // function showForm() {
 //     const icon = document.querySelector('.bxs-message-square-edit')
@@ -808,47 +826,15 @@ search_btn_promotor.addEventListener('click', () => {
 
 // idUsuario.innerHTML = userinfo.id_user;
 
-function enviarAtt() {
-    let senhaAntiga = document.querySelector('.senhaAntiga').value
-    let senhaNova = document.querySelector('.senhaNova').value
-    let confirmarSenha = document.querySelector('.confirmarSenha').value
-    listaUsuarios.forEach(user => {
-        if (user.senha == senhaAntiga && senhaNova == confirmarSenha) {
-            let info = JSON.stringify({
-                "senha": senhaNova,
-            })
-            console.log(senhaAntiga);
-            console.log(senhaNova);
-            console.log(confirmarSenha);
-            fetch('http://localhost:3000/usuarios/id/' + userinfo.id_user, {
-                "method": "PUT",
-                "headers": {
-                    "Content-Type": "application/json"
-                },
-                "body": info
-            })
-                .then(response => response.json())
-                .then(resp => {
-                    window.location.reload()
-                })
-        } else {
-            var dados = document.querySelector('.dados')
-            dados.classList.remove('model')
-        }
-    })
 
-}
+const btnAdicionarFoto = document.getElementById('btn_adicionar_foto');
+const inputFileFoto = document.getElementById('input-file-foto');
 
-
-
-const btnAdicionar = document.getElementById('btn_adicionar');
-const inputFile = document.getElementById('input-file');
-
-btnAdicionar.addEventListener('click', () => {
-    inputFile.click();
+btnAdicionarFoto.addEventListener('click', () => {
+    inputFileFoto.click();
 });
 
-inputFile.addEventListener('change', (event) => {
+inputFileFoto.addEventListener('change', (event) => {
     const file = event.target.files[0];
 
     const formData = new FormData();
@@ -856,7 +842,7 @@ inputFile.addEventListener('change', (event) => {
     console.log(file)
     const id_usuario = userinfo.id_user;
 
-    const url = `http://localhost:3000/enviar/${id_usuario}`;
+    const url = `http://localhost:3000/enviarPromotor/${id_usuario}`;
 
     fetch(url, {
         method: 'POST',

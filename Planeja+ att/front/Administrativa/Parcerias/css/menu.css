@@ -23,15 +23,15 @@ nav.menu-lateral {
     width: 80px;
     height: 100%;
     background: #3c3558;
-    background: linear-gradient(55deg, rgb(68, 55, 120) 0%, rgba(37, 39, 44, 0.969625350140056) 100%);
+    background: linear-gradient(55deg, rgb(68, 55, 120) 0%, rgba(37,39,44,0.969625350140056) 100%);
     padding: 35px 0 40px 1%;
-    /* box-shadow: 3px 0 0 #1299e7;    */
+ /* box-shadow: 3px 0 0 #1299e7;    */
     position: fixed;
     top: 0;
     left: 0;
     overflow: hidden;
     transition: .5s;
-
+    
 }
 
 nav.menu-lateral.expandir {
@@ -52,7 +52,7 @@ nav.menu-lateral.expandir {
     padding-right: 0px;
 }
 
-.btn-expandir>h2 {
+.btn-expandir> h2 {
     color: white;
 }
 
@@ -78,7 +78,6 @@ ul li.ativo {
     box-shadow: 1px 0px 0px white;
     transition: 0.5s;
 }
-
 ul li.item-menu:hover {
     /* background: #FF0077; */
 }
@@ -109,50 +108,4 @@ nav.menu-lateral.expandir .txt-link {
 ul li.item-menu a .icon>i {
     font-size: 20px;
     margin-left: 10px;
-}
-
-@media screen and (max-width: 1200px) {
-
-    .btn-expandir {
-        width: 100%;
-        padding-left: 10px;
-        display: flex;
-        margin-top: 15px;
-    }
-
-    #btn-exp {
-        color: #ffffff;
-        font-size: 20pt;
-    }
-
-    nav.menu-lateral {
-        width: 60px;
-        height: 100%;
-        background: white;
-        background: linear-gradient(55deg, #443778 0%, rgba(37, 39, 44, 0.969625350140056) 100%);
-        padding: 35px 0 40px 1%;
-        box-shadow: 3px 0 0 #503f91;
-        position: fixed;
-        top: 0;
-        left: 0;
-        overflow: hidden;
-        transition: .5s;
-
-    }
-
-    nav.menu-lateral.expandir {
-        width: 170px;
-        background: white;
-        background: linear-gradient(55deg, rgb(68, 55, 120) 0%, rgba(37, 39, 44, 0.969625350140056) 100%);
-    }
-
-
-    ul li.ativo {
-        padding: 0px;
-        width: 1px;
-        margin-left: 0;
-        box-shadow: 1px 0px 0px white;
-        transition: 0.5s;
-    }
-
 }

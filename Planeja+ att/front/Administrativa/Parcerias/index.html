@@ -22,7 +22,6 @@
 
 
 </head>
-<a href="../Eventos/Conferir/index.html"></a>
 
 <body onload="Carregar()">
 
@@ -64,20 +63,6 @@
                 <a href="../Eventos/index.html">
                     <p class="icon"><i class="bi bi-calendar-event"></i></p>
                     <p class="txt-link">Eventos</p>
-                </a>
-            </li>
-
-            <li class="item-menu">
-                <a href="../../Convidados/index.html">
-                    <p class="icon"><i class="bi bi-person"></i></p>
-                    <p class="txt-link">Convidado</p>
-                </a>
-            </li>
-
-            <li class="item-menu">
-                <a href="../../PerfilUser/perfilUser.html">
-                    <p class="icon"><i class="bi bi-chat"></i></p>
-                    <p class="txt-link">Chat</p>
                 </a>
             </li>
 
@@ -160,10 +145,9 @@
             <div class="cont_btn">
                 <div>
                     <button onclick="VoltarModal()">Voltar</button>
-                    <button class="btn_confirmar_parceria model" onclick="ConfirmarParceria(this)">Confirmar
-                        Parceria</button>
-                    <button class="btn_criar_eventos_p_parceria model" onclick="CriarEvento(this)">Criar Evento</button>
-                    <button class="btn_conferir_evento model" onclick="ConferirEvento(this)">Conferir Evento</button>
+                    <button class="btn_confirmar_parceria" onclick="ConfirmarParceria(this)">Confirmar Parceria</button>
+                    <button class="btn_criar_eventos_p_parceria" onclick="CriarEvento(this)">Criar Evento</button>
+                    <button class="btn_conferir_evento" onclick="ConferirEvento(this)">Conferir Evento</button>
                 </div>
 
                 <img src="assets/icons/lixo.png" alt="">
@@ -216,7 +200,7 @@
                             <td class="promotor_user"> Aniversário</td>
                             <td class="data_evento_user">22/06/2023</td>
                             <td class="stt_pendentes status_Evento_user">Pendente</td>
-                            <td onclick="AbrirChat2(this)">
+                            <td onclick="AbrirModal(this)">
                                 <img src="assets/icons/message.png" alt="">
                             </td>
                         </tr>
@@ -229,7 +213,7 @@
                             <td class="promotor_user"> Aniversário</td>
                             <td class="data_evento_user">22/06/2023</td>
                             <td class="stt_pendentes status_Evento_user">Pendente</td>
-                            <td onclick="AbrirChat2(this)">
+                            <td onclick="AbrirModal(this)">
                                 <img src="assets/icons/message.png" alt="">
                             </td>
                         </tr>
@@ -243,7 +227,7 @@
                             <td class="promotor_user"> Aniversário</td>
                             <td class="data_evento_user">22/06/2023</td>
                             <td class="stt_pendentes status_Evento_user">Pendente</td>
-                            <td onclick="AbrirChat2(this)">
+                            <td onclick="AbrirModal(this)">
                                 <img src="assets/icons/editar.png" alt="">
                             </td>
                         </tr>
@@ -295,9 +279,8 @@
                             <td class="cliente"> Aniversário</td>
                             <td class="data_evento">22/06/2023</td>
                             <td class="stt_pendentes status_Evento">Pendente</td>
-                            <td>
-                                <img onclick="AbrirModal(this)" src="assets/icons/editar.png" alt="">
-                                <img onclick="AbrirChat(this)" src="assets/icons/message.png" alt="">
+                            <td onclick="AbrirModal(this)">
+                                <img src="assets/icons/editar.png" alt="">
                             </td>
                         </tr>
                     </tbody>
@@ -309,9 +292,8 @@
                             <td class="tipo_Evento">Coca Cola</td>
                             <td class="data_evento">22/06/2023</td>
                             <td class="stt_abertos status_Evento">Pendente</td>
-                            <td>
-                                <img onclick="AbrirModal(this)" src="assets/icons/editar.png" alt="">
-                                <img onclick="AbrirChat(this)" src="assets/icons/message.png" alt="">
+                            <td onclick="AbrirModal(this)">
+                                <img src="assets/icons/editar.png" alt="">
                             </td>
                         </tr>
                     </tbody>
@@ -323,9 +305,8 @@
                             <td class="tipo_Evento">Coca Cola</td>
                             <td class="data_evento">22/06/2023</td>
                             <td class="stt_fechadas status_Evento">Pendente</td>
-                            <td>
-                                <img onclick="AbrirModal(this)" src="assets/icons/editar.png" alt="">
-                                <img onclick="AbrirChat(this)" src="assets/icons/message.png" alt="">
+                            <td onclick="AbrirModal(this)">
+                                <img src="assets/icons/editar.png" alt="">
                             </td>
                         </tr>
                     </tbody>

@@ -60,7 +60,10 @@ function PreencherProdutores() {
             var novoCadProdutor = cadProdutor.cloneNode(true)
 
             novoCadProdutor.style.display = "block"
+
             novoCadProdutor.querySelector('.imgdoPromotor').src = "../../../back/src/" + u.caminhoImagemPromotor
+            var imgCard = document.querySelector('.imgdoPromotor')
+            imgCard.style.backgroundColor = "#3B345F"
             novoCadProdutor.querySelector('.desc-promotor').innerHTML = u.desc
 
             novoCadProdutor.querySelector('.id_promotor').innerHTML = u.id_usuario

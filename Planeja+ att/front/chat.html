@@ -94,9 +94,16 @@
                     <i class='bx bx-search'></i>
                 </div>
                 <div class="cont-infos" onClick="exibirMensagem(this)" style="display: none">
-                    <img class="imgProdutores" src="" alt="">
-                    <span class="id-promotor" style="display: none"></span>
-                    <span class="nome-promotor"></span>
+                    <div class="div">
+                        <img class="imgProdutores" src="" alt="">
+                        <span class="id-promotor" style="display: none"></span>
+                        <div class="cont-div-desc">
+                            <span class="nome-promotor"></span>
+                            <span class="descPromo">a</span>
+                        </div>
+
+                    </div>
+
                 </div>
                 <!-- <div class="cont-infos">
                     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ34iEOaXace3VrMFdmWGZlPt_tA45DhQgVUA&usqp=CAU"
@@ -117,6 +124,7 @@
             <div class="cont-nome-promotor">
                 <img class="imgProdutor" src="" alt="">
                 <span class="nomePromotor"></span>
+
             </div>
             <div id="messages">
                 <span class="conteudoRemetente" style="display: none"></span>
@@ -141,60 +149,148 @@
 
 <script>
 
+
+    //Seleciona os itens clicado
+    var menuItem = document.querySelectorAll('.item-menu')
+    var title_menu = document.querySelector('.title_menu')
+    var userinfo = JSON.parse(localStorage.getItem("info"));
+
+
+    function selectLink() {
+        menuItem.forEach((item) =>
+            item.classList.remove('ativo')
+        )
+        this.classList.add('ativo')
+
+    }
+
+    menuItem.forEach((item) =>
+        item.addEventListener('click', selectLink),
+        title_menu.classList.add('model')
+
+    )
+
+    //Expandir o menu
+
+    var user = JSON.parse(localStorage.getItem("info"));
+
+    var btnExp = document.querySelector('#btn-exp')
+    var menuSide = document.querySelector('.menu-lateral')
+
+    btnExp.addEventListener('click', function () {
+        menuSide.classList.toggle('expandir')
+        title_menu.classList.toggle('model')
+
+    })
     var promotores = [];
+    var mensagens = [];
     function carregar() {
-        fetch("http://localhost:3000/usuarios")
+        const options = { method: 'GET' };
+
+        fetch('http://localhost:3000/usuarios/id/' + userinfo.id_user, options)
+            .then(response => response.json())
+            .then(response => {
+                response.conversas.forEach(c => {
+                    var p
+                    c.participantes.forEach(par => {
+                        if (par.id_usuario !== userinfo.id_user) {
+                            p = par
+                        }
+                        console.log(par)
+                    })
+                    var lista = contInfos.cloneNode(true)
+                    lista.style.display = "flex"
+                    if (lista.querySelector('.imgProdutores').src = "../../back/src/" + p.caminhoImagem == "../../back/src/" + null) {
+                        lista.querySelector('.imgProdutores').src = "assets/addImg.png"
+                    } else {
+                        lista.querySelector('.imgProdutores').src = "../../back/src/" + p.caminhoImagem
+                    }
+
+                    lista.querySelector('.id-promotor').innerHTML = p.id_usuario
+                    console.log(p.id_usuario)
+                    lista.querySelector('.nome-promotor').innerHTML = p.raz
+                    lista.querySelector('.descPromo').innerHTML = p.desc
+                    if (p.raz == null) {
+                        lista.querySelector('.nome-promotor').innerHTML = p.nome
+                    }
+                    lista.id = "c" + c.id_conversa
+                    contMsg.appendChild(lista)
+                })
+            })
+            .catch(err => console.error(err));
+
+        fetch("http://localhost:3000/messagens/idR/" + userinfo.id_user)
             .then(resp => { return resp.json() })
-            .then(lancamento => {
-                promotores = lancamento;
-                listarPromotor();
+            .then(men => {
+                mensagens = men;
+
             });
+
+
     }
     const contInfos = document.querySelector(".cont-infos");
     const contMsg = document.querySelector(".cont-mensagens");
 
-    function listarPromotor() {
-        promotores.forEach(p => {
-            var lista = contInfos.cloneNode(true)
-            lista.style.display = "flex"
-            lista.querySelector('.imgProdutores').src = "../../back/src/" + p.caminhoImagem
-            lista.querySelector('.id-promotor').innerHTML = p.id_usuario
-            lista.querySelector('.nome-promotor').innerHTML = p.raz
-            contMsg.appendChild(lista)
-        })
-    }
+    var conversas
+
+
     const messages = document.querySelector('#messages')
     const contMessages = document.querySelector('.container')
 
+    var globalId
     function exibirMensagem(e) {
         var img = e.querySelector('.imgProdutores').src
         var idPromotor = e.querySelector('.id-promotor').innerHTML
+        globalId = idPromotor
         var nomePromotor = e.querySelector('.nome-promotor').innerHTML
+        var idConversa = e.id.replace('c', '')
+
+        document.querySelector('.nomePromotor').innerHTML = nomePromotor
+        document.querySelector('.imgProdutor').src = img
         const options = { method: 'GET' }
-        console.log(idPromotor)
-        fetch('http://localhost:3000/messagens', options)
-            .then(resp => resp.json())
-            .then(resp => {
+
+
+        fetch('http://localhost:3000/usuarios/id/' + userinfo.id_user, options)
+            .then(response => response.json())
+            .then(response => {
                 messages.innerHTML = ""
-                resp.forEach(p => {
-                    if (p.destinatarioId == idPromotor) {
-                        var lista = document.createElement('span')
-                        lista.classList.add('conteudo')
-                        lista.innerHTML = p.conteudo
-                        document.querySelector('.nomePromotor').innerHTML = nomePromotor
-                        document.querySelector('.imgProdutor').src = img
-                        messages.appendChild(lista)
-                    } else {
-                        var lista = document.createElement('span')
-                        lista.classList.add('conteudoRemetente')
-                        lista.innerHTML = p.conteudo
+                // console.log(response)
+                response.conversas.forEach(c => {
+                    if (c.id_conversa == idConversa) {
+                        c.mensagens.forEach(p => {
+                            console.log(idPromotor)
+                            console.log(p.destinatarioId)
+                            console.log(p.remetenteId)
+                            if (p.remetenteId != userinfo.id_user) {
+                                var lista = document.createElement('span')
+                                lista.classList.add('conteudo')
+                                lista.innerHTML = p.conteudo
+                                document.querySelector('.nomePromotor').innerHTML = nomePromotor
+                                document.querySelector('.imgProdutor').src = img
+                                messages.appendChild(lista)
+                            } else {
+                                var lista = document.createElement('span')
+                                lista.classList.add('conteudoRemetente')
+                                lista.innerHTML = p.conteudo
 
-                        messages.appendChild(lista)
+                                messages.appendChild(lista)
+                            }
+
+                            // if (p.remetenteId == userinfo.id_user) {
+                            //     var lista = document.createElement('span')
+                            //     lista.classList.add('conteudoRemetente')
+                            //     lista.innerHTML = p.conteudo
+
+                            //     messages.appendChild(lista)
+                            // }
+
+
+                        })
                     }
-
-
                 })
+
             })
+            .catch(err => console.error(err));
 
     }
     const ws = new WebSocket('ws://localhost:3000/chat');
@@ -219,11 +315,12 @@
         const conteudoSpan = document.createElement('span');
         conteudoSpan.textContent = mensagem.conteudo;
 
-        if (remetenteId == 2) {
-            conteudoSpan.classList.add('conteudoRemetente');
-            conteudoSpan.style.display = "flex"
-        } else {
+        if (remetenteId != 3) {
             conteudoSpan.classList.add('conteudo');
+            conteudoSpan.style.display = "flex"
+            console.log(remetenteId)
+        } else {
+            conteudoSpan.classList.add('conteudoRemetente');
             conteudoSpan.style.display = "flex"
         }
 
@@ -236,9 +333,12 @@
     };
 
     function sendMessage() {
+
         const input = document.getElementById('input');
-        const remetenteId = 2;
+        const remetenteId = 3;
         const destinatarioId = 1;
+        console.log(remetenteId)
+        console.log(destinatarioId)
         const conteudo = input.value;
         const data = new Date().toISOString(); // Obtém a data atual em formato ISO string
 
@@ -263,6 +363,7 @@
             console.log('nada');
         }
     });
+
 
 </script>
 

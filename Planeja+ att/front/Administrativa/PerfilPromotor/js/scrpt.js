@@ -82,17 +82,38 @@ function Carregar() {
     usuarios.forEach(u => {
 
         if (v_user.id_promotor == u.id_usuario) {
-            var banner = document.querySelector('.carrosel')
-            banner.style.backgroundImage = `url(../../../back/src/${u.caminhoImagemBanner})`
-            console.log(`url(../../../back/src/${u.caminhoImagemBanner})`)
-            document.querySelector('#imgPromotor').src = "../../../back/src/" + u.caminhoImagem
-            document.querySelector('.instaRede').innerHTML = u.redesocial
+            // var banner = document.querySelector('.carrosel')
+            // banner.style.backgroundImage = `url(../../../back/src/${u.caminhoImagemBanner})`
+            // console.log(`url(../../../back/src/${u.caminhoImagemBanner})`)
+            if (document.querySelector('#imgPromotor').src = "../../../back/src/" + u.caminhoImagem == "../../../back/src/" + null) {
+                document.querySelector('#imgPromotor').src = "assets/addImg.png"
+            } else {
+                document.querySelector('#imgPromotor').src = "../../../back/src/" + u.caminhoImagem
+            }
+            if (document.querySelector('.instaRede').innerHTML = u.redesocial == null) {
+                document.querySelector('.instaRede').innerHTML = " "
+            } else {
+                document.querySelector('.instaRede').innerHTML = u.redesocial
+            }
+            document.querySelector('.descHome').innerHTML = u.descPagina
+            document.querySelector('.enderecoUser').innerHTML = u.endereco
 
         }
 
         if (u.id_usuario == user.id_user && u.tipo == "Produtor") {
 
             document.querySelector('.sec_promotor').style.display = "block"
+
+            if (document.querySelector('#imgPromotor').src = "../../../back/src/" + u.caminhoImagem == "../../../back/src/" + null) {
+                document.querySelector('#imgPromotor').src = "assets/addImg.png"
+            } else {
+                document.querySelector('#imgPromotor').src = "../../../back/src/" + u.caminhoImagem
+            }
+            if (document.querySelector('.instaRede').innerHTML = u.redesocial == null) {
+                document.querySelector('.instaRede').innerHTML = " "
+            } else {
+                document.querySelector('.instaRede').innerHTML = u.redesocial
+            }
 
             if (v_user.id_promotor == user.id_user) {
                 pertence = true
@@ -195,7 +216,12 @@ function Carregar() {
 
             document.querySelector('.tel').innerHTML = u.telefone
             document.querySelector('.email').innerHTML = u.email
-            document.querySelector('.instaRede').innerHTML = "@" + u.redesocial
+            if (document.querySelector('.instaRede').innerHTML = "@" + u.redesocial == "@" + null) {
+                document.querySelector('.instaRede').innerHTML = "Add rede social "
+            } else {
+                document.querySelector('.instaRede').innerHTML = "@" + u.redesocial
+            }
+
 
             tipoEventos.forEach(te => {
 

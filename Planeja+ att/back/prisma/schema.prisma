@@ -18,6 +18,8 @@ model Usuario {
   raz                       String?
   nomeFantasia              String?
   desc                      String?
+  endereco                  String?
+  descPagina                String?
   cnpj                      String?        @unique
   cpf                       String?
   tipo                      String
