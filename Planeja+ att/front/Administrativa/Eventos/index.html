@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventos - PlanejaAdimin</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+
+
+
+</head>
+
+
+<body onload="Carregar()">
+
+    <nav class="menu-lateral">
+
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+
+            <h2 class="txt-link title_menu">Planeja+</h2>
+        </div><!--btn-expandir-->
+
+        <ul>
+
+            <li class="item-menu sec_promotor" style="display: none;">
+                <a href="../PainelControle/index.html">
+                    <p class="icon"><i class="bi bi-columns-gap"></i></p>
+                    <p class="txt-link">Dashboard</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../Promotores/promotores.html">
+                    <p class="icon"><i class="bi bi-compass-fill"></i>
+                    </p>
+                    <p class="txt-link">Promotores</p>
+                </a>
+
+            </li>
+
+            <li class="item-menu">
+                <a href="../Parcerias/index.html">
+                    <p class="icon"><i class="bi bi-people-fill"></i>
+                    </p>
+                    <p class="txt-link">Parcerias</p>
+                </a>
+
+            </li>
+            <li class="item-menu ativo">
+                <a href="../Eventos/index.html">
+                    <p class="icon"><i class="bi bi-calendar-event"></i></p>
+                    <p class="txt-link">Perfil</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Convidados/index.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Convidado</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../PerfilUser/perfilUser.html">
+                    <p class="icon"><i class="bi bi-chat"></i></p>
+                    <p class="txt-link">Chat</p>
+                </a>
+            </li>
+
+
+
+            <li class="item-menu">
+                <a href="../../Login/login.html">
+                    <p class="icon"><i class="bi bi-box-arrow-right"></i>
+                    </p>
+                    <p class="txt-link">Sair</p>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+
+    <main class="conteudo_do_site">
+
+        <div class="cabecalho_corpo_site">
+
+
+            <div class="cont_titulo">
+                <i class='bx bx-calendar-event'></i>
+                <h1 class="titulo_page">MEU PERFIL</h1>
+            </div>
+
+            <hr>
+
+        </div>
+
+        <div class="cont_table_user">
+
+            <div class="table-container table_promotor model">
+
+                <div class="modal_finalizar_evento model">
+
+                    <h3>Finalizar Evento?</h3>
+
+                    <p class="id_evento" style="display: none;"></p>
+                    <hr>
+
+                    <span class="nome_Evento">Nome do Evento</span>
+
+                    <div class="btn_finalizar_evento">
+
+                        <button onclick="CancelarFinalizarEvento()">Cancelar</button>
+                        <button class="btn_confirmar" style="display: none;"
+                            onclick="ConfirmarFinalizarEvento()">Finalizar Evento</button>
+                        <button class="btn_reabrir" style="display: none;" onclick="ConfirmarReabrirEvento()">Reabrir
+                            Evento</button>
+
+                    </div>
+
+                </div>
+                <div class="inf_tables">
+                    <div>
+                        <h3>Seus Eventos</h3>
+                        <p>Confira todos os Seus Eventos</p>
+                    </div>
+
+                    <div class="tables">
+
+                        <button onclick="CriarEvento()"><a style="text-decoration: none; color: white;"> Criar
+                                Evento</a></button>
+
+                    </div>
+                </div>
+
+                <div class="cont_busca_filtro">
+                    <div>
+
+                        <p>Filtrar por:</p>
+                        <select class="eventos_tipo_promotor" onclick="SelecionarCategoriaTabelaPromotor()">
+                            <option value="evento_abertos_promotor">Eventos Abertos</option>
+                            <option value="evento_finalizados_promotor">Eventos Fechados</option>
+                        </select>
+                    </div>
+
+                    <div class="search_busca">
+                        <i class='bx bx-search-alt btn-filter'></i>
+                        <input class="search_inp_promotor" placeholder="Busque Seus Eventos . . . ." type="text">
+                    </div>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Produtor</th>
+                            <th>Data Início</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="aberto model">
+                        <tr class="evento model">
+                            <td class="id_evento" style="display: none;"></td>
+                            <td class="nome_evento"> Aniversário</td>
+                            <td class="promotor_Evento">Coca Cola</td>
+                            <td class="data_inicio">22/06/2023</td>
+                            <td class="stt_abertos status_Evento">Aberto</td>
+                            <td>
+                                <img onclick="EditarEvento(this)" src="assets/icons/editar.png" alt="">
+
+                                <img onclick="Conferir(this)" src="assets/icons/visualizar.png" alt="">
+
+                                <img onclick="AbrirModalFinalizarEvento(this)" src="assets/icons/finalizar.png" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+
+                    <tbody class="finalizados model">
+                        <tr class="evento model">
+                            <td class="id_evento" style="display: none;"></td>
+                            <td class="nome_evento"> Aniversário</td>
+                            <td class="promotor_Evento">Coca Cola</td>
+                            <td class="data_inicio">22/06/2023</td>
+                            <td class="stt_abertos status_Evento">Aberto</td>
+                            <td>
+                                <img onclick="EditarEvento(this)" src="assets/icons/editar.png" alt="">
+
+                                <img onclick="Conferir(this)" src="assets/icons/visualizar.png" alt="">
+
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                    <tbody class="possuidos model">
+                        <tr class="evento model">
+                            <td class="id_evento" style="display: none;"></td>
+                            <td class="nome_evento"> Aniversário</td>
+                            <td class="promotor_Evento">Coca Cola</td>
+                            <td class="data_inicio">22/06/2023</td>
+                            <td class="stt_abertos status_Evento">Aberto</td>
+                            <td>
+                                <img onclick="Conferir(this)" src="assets/icons/visualizar.png" alt="">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="table-container table_user model">
+
+                <div class="inf_tables">
+                    <div>
+                        <h3>Seus Eventos</h3>
+                        <p>Confira todos os Seus Eventos</p>
+                    </div>
+
+                </div>
+
+                <div class="cont_busca_filtro">
+                    <div>
+
+                        <p>Filtrar por:</p>
+                        <select class="select_tipo_evento" onclick="SelecionarCategoriaTabelaUser()">
+                            <option value="evento_aberto_user">Eventos Abertos</option>
+                            <option value="evento_finalizados_user">Eventos Finalizados</option>
+                        </select>
+                    </div>
+
+                    <div class="search_busca">
+                        <i class='bx bx-search-alt btn-filter-user'></i>
+                        <input class="search" placeholder="Busque Seus Eventos . . . ." type="text">
+                    </div>
+
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Evento</th>
+                            <th>Produtor</th>
+                            <th>Data Início</th>
+                            <th>Status</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody class="aberto_user">
+                        <tr class="evento_user model">
+                            <td class="id_evento" style="display: none;"></td>
+                            <td class="nome_evento"> Aniversário</td>
+                            <td class="promotor_Evento">Coca Cola</td>
+                            <td class="data_inicio">22/06/2023</td>
+                            <td class="stt_abertos status_Evento">Aberto</td>
+                            <td>
+                                <img onclick="Conferir(this)" src="assets/icons/visualizar.png" alt="">
+                            </td>
+                        </tr>
+
+                    </tbody>
+
+                    <tbody class="finalizados_user">
+                        <tr class="evento_user model">
+                            <td class="id_evento" style="display: none;"></td>
+                            <td class="nome_evento"> Aniversário</td>
+                            <td class="promotor_Evento">Coca Cola</td>
+                            <td class="data_inicio">22/06/2023</td>
+                            <td class="stt_abertos status_Evento">Aberto</td>
+                            <td>
+                                <img onclick="Conferir(this)" src="assets/icons/visualizar.png" alt="">
+                            </td>
+                        </tr>
+
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="inf_users">
+
+                <div class="cont_img_icon">
+                    <!-- 
+                    <div id="preview-container">
+                        <img class="img_icon" src="" alt="" onmouseover="showForm()" onmouseout="hideForm()">
+                        <form enctype="multipart/form-data" class="banner_productor" style="display: none;">
+                            <label for="arquivo" class="input-label">
+                                <i class='bx bxs-message-square-edit' style="cursor: pointer;"
+                                    onclick="document.querySelector('#img').click()"></i>
+
+                                <span>Selecione um banner</span>
+
+                                <input type="file" id="img" name="img" multiple hidden>
+                            </label>
+
+                        </form>
+
+                    </div>
+                    <div class="btnsConfirmar">
+                        <p id="idUsuarioFoto" style="visibility: hidden;"></p>
+                        <i class='bx bx-check btnConfirmarImg model' onclick="enviarArquivos(this)"></i>
+                        <i class='bx bx-x btnConfirmarImgClose model' onClick="cancelarEnvio()"></i>
+                    </div> -->
+                    <img class="img_icon" src="" alt="" srcset="">
+                    <div class="btn_adicionar_foto">
+                        <i class='bx bxs-message-square-edit' id="btn_adicionar"></i>
+                        <input type="file" id="input-file" name="img" style="display: none;" accept="image/*">
+                    </div>
+
+                </div>
+
+                <div class="details details_user model">
+
+                    <h2>Informações</h2>
+
+                    <div class="inps">
+                        <p>Nome</p>
+                        <div>
+                            <img src="" alt="">
+                            <input disabled="" class="nome" type="text">
+                        </div>
+                    </div>
+
+                    <div class="inps">
+                        <p>CPF</p>
+                        <input disabled="" class="cpf_user" type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p>Email</p>
+                        <input disabled="" class="email_user" type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p style="text-align: center; margin-top: 5px;"> Senha Antiga</p>
+                        <input type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p style="text-align: center; margin-top: 5px;"> Senha Nova</p>
+                        <input type="text">
+                    </div>
+
+                </div>
+
+                <div class="details details_promotor model">
+                    <h2>Informações</h2>
+                    <div class="inps">
+                        <p>Nome Fantasia</p>
+                        <input class="nome_fantasia" type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p>CNPJ</p>
+                        <input class="cnpj" type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p>Razão Social</p>
+                        <input class="razao_social" type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p>Email</p>
+                        <input class="email_promotor" type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p>Telefone</p>
+                        <input class="telefone_promotor" type="text">
+                    </div>
+
+                    <div class="inps">
+                        <p>Senha Antiga</p>
+                        <input class="senhaAntiga" type="password">
+                    </div>
+
+                    <div class="inps">
+                        <p>Senha Nova</p>
+                        <input class="senhaNova" type="password">
+                    </div>
+
+                    <div class="inps">
+                        <p>Confirmar Senha Nova</p>
+                        <input class="confirmarSenha" type="password">
+                    </div>
+
+
+                </div>
+                <p class="dados model">Dados inválidos</p>
+                <div class="cont_btn_alterar">
+                    <button onclick="enviarAtt()">Confirmar</button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+    <script src="js/script.js"></script>
+    <!-- <script src="js/graficos.js"></script> -->
+
+
+</body>
+
+</html>

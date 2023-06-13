@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Planeja+ - Cadastrar-se</title>
+    <link rel="stylesheet" href="css/cadastrar.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<script>
+    window.localStorage.removeItem("info")
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+<script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
+
+<body>
+
+    <header>
+
+        <nav>
+
+            <div class="cont_nav">
+
+                <h1>PLANEJA+</h1>
+
+
+                <button onclick="EntrarTelaLogin()" class="btn_entrar">Entrar</button>
+            </div>
+
+        </nav>
+
+        <a href="../Login/login.html"></a>
+
+        <div class="cont_banner_inf">
+
+            <img src="img/bg_images/banner_01.jpg" alt="">
+
+            <div class="cont_title_banner_initial">
+                <h1>Bem vindo!</h1>
+
+                <p>
+                    Bem-vindo à área de cadastro de usuário e promotor de eventos! Aqui, você terá acesso a uma
+                    plataforma que facilita sua interação com eventos emocionantes ao redor do mundo. Como usuário, você
+                    poderá explorar, adquirir ingressos e compartilhar experiências. </p>
+
+                <p>Já como promotor, poderá criar e promover seus eventos, alcançando um público maior. Desfrute de uma
+                    experiência intuitiva e prepare-se para vivenciar momentos incríveis nesta jornada conosco!</p>
+
+                <div class="cont_btn_banner_initial">
+                    <button onclick="Comecar()">Começar</button>
+
+                </div>
+            </div>
+
+
+        </div>
+        <a href=""></a>
+        
+        <div id="container">
+            <div class="login-cont">
+
+                <div id="prod">
+
+                    <div class="produtor" style="display: none;">
+
+                        <div class="cont-img-banner">
+
+                            <img src="img/pessoa_mechendo_num_nootebook.jpg" alt="">
+
+                        </div>
+
+                        <div class="cont-forms">
+
+                            <div class="cont-title">
+                                <h1>Promotor de Eventos</h1>
+                                <!-- <hr> -->
+                            </div>
+
+                            <form>
+
+                                <div class="inps_senha">
+
+                                    <div>
+
+                                        <div class="single-input">
+                                            <label for="text" class="label_test" style="top: -30%;">Razão Social</label>
+                                            <input type="text" class="input" disabled="" id="razao" required>
+
+                                        </div>
+                                        <p style="text-align: center; color: red " class="err erro_raz">Razão Social não
+                                            Preenchido</p>
+                                    </div>
+
+                                    <div>
+
+                                        <div class="single-input">
+                                            <input type="text" class="input" id="email" required>
+                                            <label for="email">Email</label>
+
+                                        </div>
+
+                                        <p style="text-align: center; color: red " class="err erro_email"></p>
+                                    </div>
+                                </div>
+
+                                <div class="inps_senha">
+
+                                    <div>
+
+                                        <div class="single-input">
+                                            <input type="password" class="input" id="senha" required>
+                                            <label for="senha">Senha</label>
+                                        </div>
+
+                                        <p style="text-align: center; color: red " class="err erro_senha">Senha não
+                                            Preenchida
+                                        </p>
+                                    </div>
+
+                                    <div>
+                                        <div class="single-input">
+                                            <input type="password" class="input" id="confirmar_senha" required>
+                                            <label for="senha">Confirmar Senha</label>
+                                        </div>
+                                        <p style="text-align: center; color: red " class="err erro_confirmar_senha">
+                                            Confirmar
+                                            Senha Vazia</p>
+
+                                    </div>
+                                </div>
+
+                                <div class="inps_senha">
+
+                                    <div>
+                                        <div class="single-input">
+                                            <input type="text" class="input" id="nome_fantasia" required>
+                                            <label for="text">Nome Fantasia</label>
+                                        </div>
+                                        <p style="text-align: center; color: red " class="err erro_nome_fantasia"></p>
+
+                                    </div>
+
+                                    <div>
+                                        <div class="single-input">
+                                            <label for="text" class="label_test" style="top: -30%;">CNPJ</label>
+                                            <input type="text" class="input" disabled="" id="cnpj" required>
+                                        </div>
+                                        <p style="text-align: center; color: red " class="err erro_cnpj"></p>
+
+                                    </div>
+                                </div>
+
+                                <div class="inps_senha">
+                                    <div>
+
+                                        <div class="single-input">
+                                            <label for="text" class="label_test" style="top: -30%;">Contato</label>
+                                            <input type="text" class="input" id="telefone" required>
+                                        </div>
+
+                                        <p style="text-align: center; color: red " class="err erro_telefone">Telefone
+                                            Vazio
+                                        </p>
+
+
+                                    </div>
+                                </div>
+
+
+
+                            </form>
+
+                            <div class="cont-btn-logar">
+
+                                <button onclick="Cancelar()">Cancelar</button>
+                                <button class="button-login" onclick="SeguirEtapa()">Seguinte
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                    </div>
+                </div>
+
+                <div class="options_produtor" style="display: none;">
+
+                    <div class="cont-img-banner">
+
+                        <img src="img/imagem_servicos.jpg" alt="">
+
+                    </div>
+
+                    <div class="cont-inserir-servicos-eventos">
+
+                        <div class="cont-title">
+                            <h1>Inserir Serviços</h1>
+                            <!-- <hr> -->
+                        </div>
+
+                        <div class="inps_senha">
+
+                            <div class="single-input adicionar adicionar_tipos_eventos">
+
+                                <div>
+
+                                    <input maxlength="30" type="text" placeholder="Adicionar Eventos Realizados"
+                                        class="input" id="adicionar_tipos_eventos" required>
+
+                                    <!-- <label for="senha"></label> -->
+                                </div>
+
+                                <img class="icon_add" onclick="InserirEventosRealizados()" src="img/icons/add.png"
+                                    alt="">
+
+                            </div>
+
+                            <a href="../Home/index.html"></a>
+
+                        </div>
+
+                        <p style="text-align: center; color: red; margin-top: 1%; display: none;"
+                            class="erro_adicionar_tipos_eventos_vazios"></p>
+
+                        <div class="tipos_eventos_realizados">
+
+                        </div>
+
+
+
+                        <div class="inps_senha">
+
+                            <div class="single-input adicionar adicionar_servicos">
+
+                                <div>
+
+                                    <input type="text" placeholder="Adicionar Serviços Fornecidos" class="input"
+                                        id="input_servicos" required>
+                                    <!-- <label for="senha"></label> -->
+                                </div>
+
+                                <img class="icon_add" onclick="AdicionarServicos()" src="img/icons/add.png" alt="">
+
+                            </div>
+                        </div>
+
+
+                        <p style="text-align: center; color: red; margin-top: 1%; display: none;" class="erro_servicoes_prestados">
+                        </p>
+
+                        <div class="servicoes_prestados">
+
+                        </div>
+
+                        <div class="cont-btn-logar">
+                            <button onclick="Cancelar()">Cancelar</button>
+
+                            <button class="button-login" onclick="CadastrarProdutor()">Confirmar
+                            </button>
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <div class="cont-login usuario" style="display: none;">
+
+                    <div class="cont-img-banner">
+
+                        <img src="img/pessoa_mechendo_num_Tablet.jpg" alt="">
+
+                    </div>
+
+                    <div class="inf_user_cadastro">
+
+                        <div class="cont-title">
+                            <h1>Usuario</h1>
+                            <!-- <hr> -->
+                        </div>
+
+                        <form class="forms_user">
+
+                            <div class="inps_senha">
+
+                                <div class="inps">
+
+                                    <div class="single-input">
+                                        <input type="text" class="input" id="nomeUser" required>
+                                        <label for="text">Nome Completo</label>
+
+                                    </div>
+                                    <p style="text-align: center; color: red " class="err erro_nome_user">Nome não
+                                        Preenchido</p>
+                                </div>
+
+
+                            </div>
+
+                            <div class="inps_senha">
+
+                                <div class="inps">
+                                    <div class="single-input">
+                                        <input type="text" class="input" id="emailUser" required>
+                                        <label for="email">Email</label>
+                                    </div>
+
+                                    <p style="text-align: center; color: red" class="err erro_email_user">Email não
+                                        Preenchido
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div class="inps_senha">
+
+                                <div class="inps">
+                                    <div class="single-input">
+                                        <input type="password" class="input" id="senhaUser" required>
+                                        <label for="senha">Senha</label>
+                                    </div>
+
+                                    <p style="text-align: center; color: red " class="err erro_senha_user">Senha não
+                                        Preenchida
+                                    </p>
+                                </div>
+
+                            </div>
+
+                            <div class="inps_senha">
+                                <div class="inps">
+                                    <div class="single-input">
+                                        <input type="password" class="input" id="confirmar_senhaUser" required>
+                                        <label for="senha">Confirmar Senha</label>
+                                    </div>
+                                    <p style="text-align: center; color: red " class="err erro_confirmar_senha">
+                                        Confirmar
+                                        Senha Vazia</p>
+
+                                </div>
+                            </div>
+
+
+
+                            <div class="inps_senha cpf_inps">
+
+                                <div>
+                                    <div class="single-input">
+                                        <input type="number" class="input" id="cpfUser" required>
+                                        <label for="text">CPF</label>
+                                    </div>
+
+                                    <p style="text-align: center; color: red " class="err erro_cpf">CPF Vazio</p>
+
+                                </div>
+                            </div>
+
+                        </form>
+
+                        <div class="cont-btn-logar">
+                            <button onclick="Voltar()">Voltar</button>
+
+                            <button class="button-login" onclick="CadastrarUsuario()">Cadastrar
+                            </button>
+                        </div>
+
+                        <!-- <div class="outros-meios-cadastros_title">
+
+                        <p>Ja Possui conta?</p>
+                    </div>
+
+                    <div class="cadastrar-cont">
+                        <a href="../Login/login.html">Fazer Login</a>
+                    </div> -->
+                    </div>
+
+
+                </div>
+
+            </div>
+
+            <div>
+                <div class="cont_select_options">
+
+                    <div onclick="SelecionarOpcao(this)">
+                        <h4 class="title">USUÁRIO</h4>
+
+                        <img src="img/usuario_image0.png" alt="">
+
+                    </div>
+
+                    <h1>OU</h1>
+
+                    <div onclick="SelecionarOpcao(this)">
+                        <h4 class="title">PROMOTOR DE EVENTOS</h4>
+                        <img src="img/produtor_image_2.jpg" alt="">
+
+
+                    </div>
+
+                </div>
+            </div>
+
+
+            <div class="cnpj " style="display: none;">
+
+                <div class="cont-img-banner">
+
+                    <img src="img/pessoa_mechendo_num_nootebook.jpg" alt="">
+                </div>
+
+
+                <div class="cnpj_cont">
+                    <div>
+                        <div class="cont-title">
+                            <h3 style="font-family: 'Tumbly';">Insira o CNPJ</h3>
+                            <!-- <hr> -->
+                        </div>
+
+                        <div class="single">
+                            <div class="single-input">
+                                <input type="text" placeholder="CNPJ" class="input" id="cnpj_inp" required>
+                            </div>
+                            <p style="display: none; text-align: center; color: red; margin-top: 5px; " class="erro_cnpj_inp"></p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="cont-btn-logar">
+
+                        <button onclick="Voltar()">Voltar</button>
+
+                        <button class="button-login" onclick="VerificarCNPJ()">Confirmar
+                        </button>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CLONES -->
+            <div class="servicos model">
+                <p>
+                    <span class="title_service"> Serviço Teste</span>
+
+                    <i class='bx bx-x' onclick="RemoverServicos(this)"></i>
+
+                </p>
+            </div>
+
+            <div class="eventos_realizados model">
+                <p>
+                    <span class="title_eventos_realizados"> Serviço Teste</span>
+
+                    <i class='bx bx-x' onclick="RemoverEventosRelizados(this)"></i>
+
+                </p>
+            </div>
+
+            <div class="inf_line2">
+
+                <h2>Perguntas Frequentes (FAQ)</h2>
+
+                <div class="faq-container">
+                    <div class="faq-item">
+                        <div class="question">Como eu faço XYZ?</div>
+                        <div class="answer">Aqui está a resposta para a pergunta XYZ.</div>
+                        <div class="icon">+</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">Qual é a melhor maneira de ABC?</div>
+                        <div class="answer">Aqui está a resposta para a pergunta ABC.</div>
+                        <div class="icon">+</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">Como eu faço XYZ?</div>
+                        <div class="answer">Aqui está a resposta para a pergunta XYZ.</div>
+                        <div class="icon">+</div>
+                    </div>
+
+                    <div class="faq-item">
+                        <div class="question">Como eu faço XYZ?</div>
+                        <div class="answer">Aqui está a resposta para a pergunta XYZ.</div>
+                        <div class="icon">+</div>
+                    </div>
+
+                    <!-- Adicione mais perguntas frequentes aqui -->
+                </div>
+
+
+            </div>
+
+        </div>
+
+
+        <div class="cont_footer">
+
+            <footer class="pie-pagina">
+                <div class="grupo-1">
+                    <div class="box">
+                        <figure>
+                            <a href="#">
+
+                                <h1>Planeja+</h1>
+                                <!-- <img src="assets/logoP.png" alt="Logo de SLee Dw"> -->
+                            </a>
+                        </figure>
+                    </div>
+                    <div class="box">
+                        <h2>Sobre Nós</h2>
+                        <p>Está precisando criar uma festa, jantares, churrasco e etc. . .? Aqui é o lugar!</p>
+                        <p>Encontre o seu evento ideal, ou seja um promotor de eventos e crie os seus!</p>
+                    </div>
+                    <div class="box">
+                        <h2>Nos Siga</h2>
+                        <div class="red-social">
+                            <a href="#" class="fa fa-facebook"></a>
+                            <a href="#" class="fa fa-instagram"></a>
+                            <a href="#" class="fa fa-twitter"></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="grupo-2">
+                    <small>&copy; 2023 <b>PLANEJA+</b> - Todos os Direitos Reservados.</small>
+                </div>
+            </footer>
+        </div>
+</body>
+
+<script src="js/cadastrarProdutor.js"></script>
+<script src="https://apis.google.com/js/platform.js" async defer></script>
+
+<script type="text/javascript">
+    $("#cnpjUser").mask("000.000.000-00");
+    $("#cnpj_inp").mask("00.000.000/0000-00");
+    $("#telefone").mask("(00) 00000-0000");
+</script>
+
+</html>

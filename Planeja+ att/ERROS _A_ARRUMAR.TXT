@@ -1,0 +1,3 @@
+Tela Cadastro = Adicionar Novos Campos na Tabela Usuario, como descricao, @ do insta, @ twitter e endereco.
+Tela Cadastro = Mascar o input cpf do usuario, não ta pegando a mascára.
+Tela Cadastro = Colocar as Perguntas Frequantes.
