@@ -76,29 +76,9 @@ function carregar() {
         });
 
 
-    // if (!user.token) {
-    //     console.error('Token de autenticação não encontrado');
-    //     return;
-    // }
-
-    // fetch('http://localhost:3000/conversas', {
-    //     headers: {
-    //         Authorization: `Bearer ${user.token}`
-    //     }
-    // })
-    //     .then(response => response.json())
-    //     .then(data => {
-    //         // Aqui você tem acesso às conversas retornadas pelo backend
-    //         // Faça o processamento necessário e exiba as conversas no frontend
-    //         exibirConversas(data);
-    //     })
-    //     .catch(error => {
-    //         // Trate erros caso ocorra algum problema na requisição
-    //         console.error('Erro ao obter as conversas:', error);
-    //     });
-
-
 }
+
+
 const contInfos = document.querySelector(".cont-infos");
 const contMsg = document.querySelector(".cont-mensagens");
 
@@ -204,15 +184,6 @@ function exibirMensagem(e) {
 
                             messages.appendChild(lista)
                         }
-
-                        // if (p.remetenteId == userinfo.id_user) {
-                        //     var lista = document.createElement('span')
-                        //     lista.classList.add('conteudoRemetente')
-                        //     lista.innerHTML = p.conteudo
-
-                        //     messages.appendChild(lista)
-                        // }
-
 
                     })
                 }

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="stylesheet" href="css/chat.css">
+    <title>Document</title>
+</head>
+<header>
+    <nav class="menu-lateral">
+
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+
+            <h2 class="txt-link title_menu">Planeja+</h2>
+        </div><!--btn-expandir-->
+
+        <ul>
+            <li class="item-menu sec_promotor" style="display: none;">
+                <a href="../PainelControle/index.html">
+                    <p class="icon"><i class="bi bi-columns-gap"></i></p>
+                    <p class="txt-link">Dashboard</p>
+                </a>
+            </li>
+
+            <li class="item-menu ativo">
+                <a href="../Promotores/promotores.html">
+                    <p class="icon"><i class="bi bi-compass-fill"></i>
+
+                    </p>
+                    <p class="txt-link">Promotores</p>
+                </a>
+
+            </li>
+
+            <li class="item-menu">
+                <a href="../Parcerias/index.html">
+                    <p class="icon"><i class="bi bi-people-fill"></i>
+                    </p>
+                    <p class="txt-link">Parcerias</p>
+                </a>
+
+            </li>
+            <li class="item-menu">
+                <a href="../Eventos/index.html">
+                    <p class="icon"><i class="bi bi-calendar-event"></i></p>
+                    <p class="txt-link">Perfil</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Convidados/index.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Convidado</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../PerfilUser/perfilUser.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Chat</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Login/login.html">
+                    <p class="icon"><i class="bi bi-box-arrow-right"></i>
+                    </p>
+                    <p class="txt-link">Sair</p>
+                </a>
+            </li>
+        </ul>
+
+    </nav><!--menu-lateral-->
+</header>
+
+<body onload="carregar()">
+
+    <main>
+        <div class="cont-users">
+            <div class="inp-busca">
+                <input type="text" placeholder="Faça sua busca...">
+                <i class='bx bx-search-alt'></i>
+            </div>
+            <div class="cont-do-user">
+                <div style="display: none" class="cont-info-dest" id="info-container" onclick="exibirMensagem(this)">
+                    <span class="id-promotor"></span>
+                    <div class="img-menu">
+                        <img class="img-cont-info" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
+                    </div>
+                    <div class="cont-infos-users">
+                        <div class="nome-e-hora">
+                            <p class="nome-promotor">Nome usuario</p>
+                            <span>horario</span>
+                        </div>
+                        <div class="cont-ultima-msg">
+                            <span>última msg</span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="add-user" onclick="escolherUser()">
+                <i class='bx bx-plus-circle' id="teste5"></i>
+            </div>
+
+        </div>
+
+
+
+        <div id="chat" class="cont-chat">
+
+            <div class="cabecalho-user">
+                <div class="img-e-nome">
+                    <img class="img-perfil" src="https://cdn-icons-png.flaticon.com/512/1946/1946429.png" alt="">
+                    <span class="nome-perfil">Selecione uma conversa</span>
+                </div>
+                <div class="ver-perfil">
+                    <button class="btn-show">
+                        <i class='bx bx-show-alt'></i>
+                    </button>
+                    <button id="color-picker">
+                        <i class="bx bx-brush"></i>
+                    </button>
+                </div>
+            </div>
+
+
+            <div class="cont-msg">
+                <div id="messages">
+                    <span class="conteudoRemetente">Selecione uma conversa</span>
+                    <span class="conteudo" style="display: none;"></span>
+                </div>
+            </div>
+
+            <div class="barra">
+                <input type="text" id="mensagem-input" placeholder="Digite a mensagem aqui...">
+                <div class="icones-barra">
+                    <div class="teste2" id="teste">
+                        <i class="bx bx-camera" id="icone-camera"></i>
+                    </div>
+                    <div class="teste3" id="teste4">
+                        <i class="bx bx-send" id="icone-send"></i>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+            </divid=class=>
+
+    </main>
+
+    <div class="selecionar-promotor model">
+        <select class="select_promo" name="" id="promo">
+
+        </select>
+        <button class="confirm model">Confirmar</button>
+        <p class="parceria model">Você não tem parcerias</p>
+        <button class="voltar" onclick="fecharModel()">Voltar</button>
+
+    </div>
+
+</body>
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+<script src="js/chat.js"></script>
+
+</html>
