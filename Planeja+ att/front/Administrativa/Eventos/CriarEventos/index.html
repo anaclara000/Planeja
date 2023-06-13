@@ -1,0 +1,458 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Criar Eventos - PlanejaAdimin</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.11/jquery.mask.min.js"></script>
+    <script src="https://kit.fontawesome.com/eb496ab1a0.js" crossorigin="anonymous"></script>
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+
+
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+
+</head>
+
+<body onload="Carregar()">
+
+    <nav class="menu-lateral">
+
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+
+            <h2 class="txt-link title_menu">Planeja+</h2>
+        </div><!--btn-expandir-->
+
+        <ul>
+            <li class="item-menu sec_promotor" style="display: none;">
+                <a href="../../PainelControle/index.html">
+                    <p class="icon"><i class="bi bi-columns-gap"></i></p>
+                    <p class="txt-link">Dashboard</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Promotores/promotores.html">
+                    <p class="icon"><i class="bi bi-compass-fill"></i>
+                    </p>
+                    <p class="txt-link">Promotores</p>
+                </a>
+
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Parcerias/index.html">
+                    <p class="icon"><i class="bi bi-people-fill"></i>
+                    </p>
+                    <p class="txt-link">Parcerias</p>
+                </a>
+
+            </li>
+            <li class="item-menu ativo">
+                <a href="../../Eventos/index.html">
+                    <p class="icon"><i class="bi bi-calendar-event"></i></p>
+                    <p class="txt-link">Perfil</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../../Convidados/index.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Convidado</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../../PerfilUser/perfilUser.html">
+                    <p class="icon"><i class="bi bi-chat"></i></p>
+                    <p class="txt-link">Chat</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../../Login/login.html">
+                    <p class="icon"><i class="bi bi-box-arrow-right"></i>
+                    </p>
+                    <p class="txt-link">Sair</p>
+                </a>
+            </li>
+        </ul>
+
+    </nav>
+
+    <main class="conteudo_do_site">
+
+        <div class="cabecalho_corpo_site">
+
+            <div class="cont_titulo">
+                <i class='bx bx-calendar-event'></i>
+                <h1 class="titulo_page">Criação de Eventos</h1>
+            </div>
+
+            <hr>
+
+        </div>
+
+        <div class="create_evento">
+
+            <div class="section_0 ">
+
+                <div class="detais_section_0">
+                    <img src="assets/banners/person-working-office.jpg" alt="">
+
+                    <div>
+                        <h1>Olá, Bem Vindo</h1>
+                        <p>Nessa área você irá poder criar seus eventos de maneira bem organizada e detalhada, com facil
+                            usabilidade.</p>
+                        <div class="cont_btn">
+                            <button onclick="VoltarTelaInicial()">Voltar</button>
+                            <button onclick="Comecar()">Começar</button>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section_1 model">
+
+                <div class="detais_section_1">
+                    <img src="assets/banners/person-working-office.jpg" alt="">
+
+                    <div>
+                        <h1>Cadastro Inicial</h1>
+
+
+                        <div class="inps inp_cpf_user">
+                            <div>
+                                <p>CPF do Cliente</p>
+                                <p style="color: red;" class="err_cpf_cliente model">*Erro Evento</p>
+
+                            </div>
+                            <div>
+                                <img src="assets/icons/user.png" alt="">
+                                <input onkeyup="ConferirCpfParceria()" placeholder="Insira o cpf do Cliente . . . ."
+                                    class="cpf_user" type="text" name="" id="">
+                            </div>
+
+                        </div>
+
+                        <hr class="line_one_section_1">
+                        <hr class="line_two_section_1">
+
+                        <div class="inps">
+                            <div>
+                                <p>Nome do Evento</p>
+                                <p style="color: red;" class="err_nome_evento model">*Nome Evento</p>
+
+                            </div>
+                            <div>
+                                <img src="assets/icons/festival-de-musica.png" alt="">
+                                <input placeholder="Insira o Nome do Evento . . . ." class="nome_evento" type="text"
+                                    name="" id="">
+                            </div>
+
+                        </div>
+
+                        <div class="inps">
+
+                            <div>
+                                <p>Endereço do Evento</p>
+                                <p style="color: red;" class="err_endereco_evento model">*Erro Evento</p>
+                            </div>
+                            <div>
+                                <img src="assets/icons/pin-de-localizacao.png" alt="">
+                                <input placeholder="Insira o Nome do Evento . . . ." class="endereco_evento" type="text"
+                                    name="" id="">
+                            </div>
+
+                        </div>
+
+                        <div class="inps">
+
+                            <div>
+                                <p>Descrição do Evento</p>
+                                <p style="color: red;" class="err_descricao_evento model">*Erro Descricao Evento</p>
+                            </div>
+                            <div>
+                                <img src="assets/icons/2462844.png" alt="">
+                                <input placeholder="Insira a Descricao do Evento . . . ." class="descricao_evento"
+                                    type="text" name="" id="">
+                            </div>
+
+                        </div>
+
+                        <div class="inps">
+
+                            <div>
+                                <p>Tipo do Evento</p>
+                                <p style="color: red;" class="err_tipo_evento model">*Erro Evento</p>
+
+                            </div>
+
+                            <div>
+                                <img src="assets/icons/hastag.png" alt="">
+                                <input placeholder="Insira o Tipo do Evento . . . ." class="tipo_evento" type="text"
+                                    name="" id="">
+                            </div>
+
+                        </div>
+
+                        <div class="cont_btn">
+                            <button onclick="Cancelar()">Cencelar</button>
+
+                            <button onclick="ConfirmarCadastroIncial()">Confirmar</button>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="section_2 model">
+                <div class="detais_section_1 date_hour_event">
+                    <img src="assets/banners/person-working-office.jpg" alt="">
+
+                    <div class="cont_inps">
+                        <h1 class="title_date_hour">Data e Hora do Evento</h1>
+
+                        <div class="inps">
+
+                            <div>
+                                <p>Data e Hora Inicio</p>
+                                <p style="color: red;" class="err_data_hora_inicio_evento model">
+                                    *Erro_data_hora_inicio_evento
+                                </p>
+                            </div>
+
+                            <div>
+                                <img src="" alt="">
+                                <input type="datetime-local" class="data_hora_inicio" name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="inps">
+
+                            <div>
+                                <p>Data e Hora Fim</p>
+                                <p style="color: red;" class="err_data_hora_fim_evento model">
+                                    *Erro_data_hora_inicio_evento
+                                </p>
+                            </div>
+
+                            <div>
+                                <img src="" alt="">
+                                <input type="datetime-local" class="data_hora_fim" name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="cont_btn">
+                            <button onclick="VoltarDataHoraEvento()">Voltar</button>
+
+                            <button onclick="ConfirmarDataHoraEvento()">Confirmar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="section_3 model">
+                <div class="convidados_list">
+                    <img src="assets/banners/person-working-office.jpg" alt="">
+
+                    <div class="cont_inps">
+                        <h1>Lista de Convidados</h1>
+
+                        <div class="inps">
+
+                            <div>
+                                <p>Nome do Convidado</p>
+                                <p style="color: red;" class="err_nome_convidado model">adsadadada</p>
+
+                            </div>
+
+                            <div>
+                                <img src="" alt="">
+                                <input class="nomeConvidado" type="text" placeholder="Inserir nome do convidado . . . "
+                                    name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="inps">
+
+                            <div>
+                                <p>Telefone do Convidado</p>
+                                <p style="color: red;" class="err_telefone_convidado model">adsadadada</p>
+                            </div>
+
+                            <div>
+                                <img src="" alt="">
+                                <input class="telConvidado" type="tel"
+                                    placeholder="Inserir telefone do convidado . . . " name="" id="">
+                            </div>
+                        </div>
+
+                        <div class="btn_add_convidado">
+
+                            <button onclick="AdicionarConvidados()">Adicionar Convidado
+                                <img src="assets/icons/add_convidado.png">
+                            </button>
+                        </div>
+
+                        <div class="modal_lista_convidados">
+
+
+
+
+                        </div>
+
+                        <div class="cont_btn">
+                            <button onclick="VoltarConvidado()">Voltar</button>
+
+                            <button onclick="ConfirmarListaConvidado()">Confirmar</button>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="section_4 model">
+
+                <div class="convidados_list">
+                    <img src="assets/banners/person-working-office.jpg" alt="">
+
+                    <div class="cont_inps">
+                        <h1>Locações</h1>
+
+
+                        <div class="cont_select">
+                            <p>Suas Locações</p>
+                            <select class="select_locacoes" name="" id="">
+
+
+                            </select>
+                        </div>
+
+                        <div class="btn_add_convidado">
+
+                            <button onclick="AdicionarLocacao()">Adicionar Locação
+                                <img src="assets/icons/add_convidado.png">
+                            </button>
+                        </div>
+
+                        <div class="modal_lista_locacoes">
+
+
+                        </div>
+
+                        <div class="cont_btn">
+                            <button onclick="VoltarLocacao()">Voltar</button>
+
+                            <button onclick="ConfirmarListaLocacao()">Confirmar</button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="section_5 model">
+                <div class="banner_event">
+                    <h1>Inserir Banner do Evento</h1>
+
+                    <hr>
+                    <div>
+                        <img class="banner_evento" src="" alt="">
+                        <!-- <button class="btn_editar_banner">Editar Banner
+
+                            <img src="assets/icons/editar_icon_01.png" alt="">
+                        </button> -->
+                        <div>
+                            <button id="btn_adicionar">Adicionar banner</button>
+                            <input type="file" id="input-file" name="img" style="display: none;" accept="image/*">
+                        </div>
+
+                    </div>
+
+
+                    <div class="cont_btn">
+                        <button onclick="VoltarBanner()">Voltar</button>
+
+                        <button class="btn_criar_evento" onclick="BtnCriarEvento()">Criar Evento</button>
+                        <button class="btn_editar_evento" onclick="BtnEditarEvento()" style="display: none;">Editar
+                            Evento</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- <div class="section_5 ">
+                <div class="preview_evento">
+                    <h1>Informações Do Evento</h1>
+
+                    <hr>
+
+
+
+
+                    <div class="cont_btn">
+                        <button onclick="VoltarBanner()">Voltar</button>
+
+                        <button>Confirmar</button>
+                    </div>
+                </div>
+            </div> -->
+
+        </div>
+
+
+
+        <div class="cont_convidado" style="display: none;">
+
+            <img src="assets/icons/casa.png" alt="">
+
+            <div class="convidado_inf">
+
+                <h4 id="id_convidado" style="display: none;"></h4>
+                <h4 id="nome_convidado">Nome do Convidado</h4>
+                <span id="telefone_convidado">Telefone</span>
+            </div>
+
+            <i class='bx bx-x' onclick="RemoverConvidado(this)"></i>
+        </div>
+
+        <div class="cont_locacao" style="display: none;">
+
+            <img src="assets/icons/casa.png" alt="">
+
+            <div class="locacao_inf">
+                <h4 id="id_locacaoEvento" style="display: none;"></h4>
+                <h4 id="id_locacao" style="display: none;"></h4>
+                <h4 id="nome_locacao">Nome do Convidado</h4>
+                <span id="endereco_locacao">Telefone</span>
+            </div>
+
+            <i class='bx bx-x' onclick="RemoverLocacao(this)"></i>
+        </div>
+
+    </main>
+
+
+    <script src="js/script.js"></script>
+
+    <script type="text/javascript">
+        $(".telConvidado").mask("(00) 00000-0000");
+        $(".cpf_user").mask("000.000.000-00");
+    </script>
+
+</body>
+
+</html>

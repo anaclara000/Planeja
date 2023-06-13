@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página Inicial - PlanejaAdimin</title>
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/style.css">
+
+    <!-- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+
+</head>
+
+<body onload="Carregar()">
+
+    <nav class="menu-lateral">
+
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+
+            <h2 class="txt-link title_menu">Planeja+</h2>
+        </div><!--btn-expandir-->
+
+        <ul>
+            <li class="item-menu ativo sec_promotor">
+                <a href="../PainelControle/index.html">
+                    <p class="icon"><i class="bi bi-columns-gap"></i></p>
+                    <p class="txt-link">Dashboard</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../Promotores/promotores.html">
+                    <p class="icon"><i class="bi bi-compass-fill"></i>
+                    </p>
+                    <p class="txt-link">Promotores</p>
+                </a>
+
+            </li>
+
+            <li class="item-menu">
+                <a href="../Parcerias/index.html">
+                    <p class="icon"><i class="bi bi-people-fill"></i>
+                    </p>
+                    <p class="txt-link">Parcerias</p>
+                </a>
+
+            </li>
+            <li class="item-menu">
+                <a href="../Eventos/index.html">
+                    <p class="icon"><i class="bi bi-calendar-event"></i></p>
+                    <p class="txt-link">Perfil</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Convidados/index.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Convidado</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../PerfilUser/perfilUser.html">
+                    <p class="icon"><i class="bi bi-chat"></i></p>
+                    <p class="txt-link">Chat</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Login/login.html">
+                    <p class="icon"><i class="bi bi-box-arrow-right"></i>
+                    </p>
+                    <p class="txt-link">Sair</p>
+                </a>
+            </li>
+        </ul>
+
+    </nav><!--menu-lateral-->
+
+    <main class="conteudo_do_site">
+
+        <!-- <div class="cabecalho_corpo_site">
+
+            <div class="titulo">
+
+                <div>
+                    <div class="cont_nome_titulo">
+                        <p>Bem Vindo - </p>
+                        <h2>Nome do Promotor</h2>
+                    </div>
+
+                    <div>
+                        <p class="subtotal">
+                            Olá, confira abaixo as informações resumidas e detalhadas com as métricas de desempenho.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <i class="bi bi-person-circle"></i>
+                </div>
+            </div>
+
+            <div class="cards_informacoes">
+
+
+                <div class="cards">
+
+                    <img class="" src="assets/img/icons/evento_abertos_icon.png" alt="">
+
+                    <p>Eventos Abertos</p>
+
+                    <hr class="linha_1">
+                    <hr class="linha_2">
+                    <p class="quantidade qtd_eventos_abertos">15</p>
+                </div>
+
+                <div class="cards">
+
+                    <img src="assets/img/icons/evento_finalizados_icon.png" alt="">
+
+                    <p>Eventos Finalizados</p>
+
+                    <hr class="linha_1">
+                    <hr class="linha_2">
+                    <p class="quantidade qtd_eventos_fechados">15</p>
+
+
+                </div>
+
+                <div class="cards">
+
+                    <img src="assets/img/icons/parcerias_andamento.png" alt="">
+
+                    <p>Parcerias Pendentes</p>
+
+                    <hr class="linha_1">
+                    <hr class="linha_2">
+                    <p class="quantidade qtd_parcerias_pendentes">15</p>
+
+
+                </div>
+
+                <div class="cards">
+
+                    <img src="assets/img/icons/evento_finalizados_icon.png" alt="">
+
+                    <p>Valor Eventos</p>
+
+                    <hr class="linha_1">
+                    <hr class="linha_2">
+                    <p class="quantidade valor_total_eventos">R$2.500,00</p>
+
+
+                </div>
+
+
+            </div>
+
+            <hr class="linha_conteudo">
+
+           
+
+        </div> -->
+
+
+        <div class="cont_cards_inf">
+            <div class="cards">
+
+                <div class="card_sevicos">
+
+                    <img src="assets/img/icons/icon_relogio.png" alt="">
+
+                    <h3>Serviços</h3>
+                </div>
+
+
+
+                <div class="card_parcerias">
+
+                    <img src="assets/img/icons/icon_parceria.png" alt="">
+
+                    <h3>Parcerias</h3>
+                </div>
+
+                <div class="eventos_cards">
+
+                    <img src="assets/img/icons/icon_eventos.png" alt="">
+
+                    <h3>Eventos</h3>
+                </div>
+
+            </div>
+
+            <div class="inf_user">
+
+                <div class="icon_user">
+
+                    <img src="assets/img/icons/evento_abertos_icon.png" alt="">
+                </div>
+
+                <div class="inf_detail">
+
+                    <h2 class="nome_promotor">Nome do Promotor</h2>
+
+                    <p class="email">asdadsada@gmail.com</p>
+
+                    <div class="inf_eventos">
+
+                        <div class="cont_pendentes">
+
+                            <h3>Inativos</h3>
+
+                            <p class="qtd_inativos qtd_eventos_fechados">0</p>
+                        </div>
+
+                        <div class="cont_abertas">
+
+                            <h3>Ativos</h3>
+
+                            <p class="qtd_ativos qtd_eventos_abertos">0</p>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="cont_line_two">
+
+            <div class="cont_graficos">
+
+                <h1>Estatísticas dos Eventos</h1>
+
+                <div class="graficos">
+
+                    <div class="cont_grafico_1">
+
+                        <!-- <p>Confira a quantidade de eventos realizados a cada mês.</p> -->
+
+                        <canvas id="graficoLineOperacao"></canvas>
+                    </div>
+
+                    <div class="cont_grafico_2 " style="display: none;">
+
+                        <h3>Performace das Parcerias</h3>
+                        <p>Confira a quantidade de parcerias a cada mês.</p>
+                        <canvas id="meuGrafico"></canvas>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="cont_eventos">
+
+                <h1>EVENTOS</h1>
+
+                <div class="cont_card_eventos">
+
+                    <div class="cards_eventos" style="display: none;">
+
+                        <img src="assets/img/icons/evento_finalizados_icon.png" alt="">
+
+                        <div>
+                            <h2 class="nome_evento">Nome do Evento</h2>
+                            <span>Inicio - <span class="data_Evento">22/22/2222</span></span>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- <lord-icon
+    src="https://cdn.lordicon.com/lupuorrc.json"
+    trigger="loop"
+    style="width:250px;height:250px">
+</lord-icon> -->
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/graficos.js"></script>
+
+
+</body>
+
+</html>

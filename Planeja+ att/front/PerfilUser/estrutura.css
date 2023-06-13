@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body {
+    height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.model {
+    /* transition: 0.5s; */
+    visibility: hidden;
+}
+
+nav.menu-lateral {
+    width: 80px;
+    height: 100%;
+    background: rgb(60, 53, 88);
+    background: linear-gradient(55deg, rgb(68, 55, 120) 0%, rgba(37, 39, 44, 0.969625350140056) 100%);
+    padding: 35px 0 40px 1%;
+    /* box-shadow: 3px 0 0 #1299e7; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    transition: .5s;
+    /* border-radius: 0px 65px 65px 0px; */
+}
+
+nav.menu-lateral.expandir {
+    width: 210px;
+}
+
+.btn-expandir {
+    width: 100%;
+    padding-left: 10px;
+    display: flex;
+    margin-top: 15px;
+}
+
+.btn-expandir>i {
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding-right: 0px;
+}
+
+.btn-expandir>h2 {
+    color: white;
+}
+
+ul {
+    height: 100%;
+    list-style-type: none;
+    margin-top: 70px;
+}
+
+ul li.item-menu {
+    transition: .2s;
+    padding: 0px;
+}
+
+ul li {
+    margin-left: -10px;
+    margin-top: 30px;
+}
+
+ul li.ativo {
+    padding: 0px;
+    width: 5px;
+    box-shadow: 1px 0px 0px white;
+    transition: 0.5s;
+}
+
+
+ul li.item-menu a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 20px;
+    /* padding: 20px 4%; */
+    display: flex;
+    margin-bottom: 20px;
+    line-height: 40px;
+    margin-left: 10px;
+}
+
+ul li.item-menu a .txt-link {
+    margin-left: 70px;
+    transition: .5s;
+    opacity: 0;
+    font-size: 13pt;
+}
+
+nav.menu-lateral.expandir .txt-link {
+    margin-left: 15px;
+    opacity: 1;
+}
+
+ul li.item-menu a .icon>i {
+    font-size: 20px;
+    margin-left: 10px;
+}

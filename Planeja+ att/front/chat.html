@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="PerfilUser/estrutura.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="PerfilUser/css/style.css">
+    <script src="https://cdn.lordicon.com/ritcuqlt.js"></script>
+    <title>Chat de dúvidas</title>
+</head>
+<header>
+    <nav class="menu-lateral">
+
+        <div class="btn-expandir">
+            <i class="bi bi-list" id="btn-exp"></i>
+
+            <h2 class="txt-link title_menu">Planeja+</h2>
+        </div><!--btn-expandir-->
+
+        <ul>
+            <li class="item-menu sec_promotor" style="display: none;">
+                <a href="../PainelControle/index.html">
+                    <p class="icon"><i class="bi bi-columns-gap"></i></p>
+                    <p class="txt-link">Dashboard</p>
+                </a>
+            </li>
+
+            <li class="item-menu ativo">
+                <a href="../Promotores/promotores.html">
+                    <p class="icon"><i class="bi bi-compass-fill"></i>
+
+                    </p>
+                    <p class="txt-link">Promotores</p>
+                </a>
+
+            </li>
+
+            <li class="item-menu">
+                <a href="../Parcerias/index.html">
+                    <p class="icon"><i class="bi bi-people-fill"></i>
+                    </p>
+                    <p class="txt-link">Parcerias</p>
+                </a>
+
+            </li>
+            <li class="item-menu">
+                <a href="../Eventos/index.html">
+                    <p class="icon"><i class="bi bi-calendar-event"></i></p>
+                    <p class="txt-link">Perfil</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Convidados/index.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Convidado</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../PerfilUser/perfilUser.html">
+                    <p class="icon"><i class="bi bi-person"></i></p>
+                    <p class="txt-link">Chat</p>
+                </a>
+            </li>
+
+            <li class="item-menu">
+                <a href="../../Login/login.html">
+                    <p class="icon"><i class="bi bi-box-arrow-right"></i>
+                    </p>
+                    <p class="txt-link">Sair</p>
+                </a>
+            </li>
+        </ul>
+
+    </nav><!--menu-lateral-->
+</header>
+
+<body onLoad="carregar()">
+    <div class="container">
+        <div class="cont-fornecedor">
+            <!-- <div class="cont-infos">
+                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ34iEOaXace3VrMFdmWGZlPt_tA45DhQgVUA&usqp=CAU"
+                    alt="">
+                <span>Faça festa</span>
+            </div> -->
+            <div class="cont-mensagens">
+                <div class="cont-input-msg">
+                    <input type="text" placeholder="Procurar...">
+                    <i class='bx bx-search'></i>
+                </div>
+                <div class="cont-infos" onClick="exibirMensagem(this)" style="display: none">
+                    <img class="imgProdutores" src="" alt="">
+                    <span class="id-promotor" style="display: none"></span>
+                    <span class="nome-promotor"></span>
+                </div>
+                <!-- <div class="cont-infos">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ34iEOaXace3VrMFdmWGZlPt_tA45DhQgVUA&usqp=CAU"
+                        alt="">
+                    <span>Faça festa</span>
+                </div>
+                <div class="cont-infos">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ34iEOaXace3VrMFdmWGZlPt_tA45DhQgVUA&usqp=CAU"
+                        alt="">
+                    <span>Faça festa</span>
+                </div> -->
+
+            </div>
+
+        </div>
+        <div class="cont-msg">
+
+            <div class="cont-nome-promotor">
+                <img class="imgProdutor" src="" alt="">
+                <span class="nomePromotor"></span>
+            </div>
+            <div id="messages">
+                <span class="conteudoRemetente" style="display: none"></span>
+                <span class="conteudo" style="display: none"></span>
+            </div>
+
+
+            <div class="cont-input">
+                <div class="input">
+                    <input type="text" id="input" placeholder="Digite sua mensagem..." />
+                    <i class='bx bx-send' onclick="sendMessage()"></i>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</body>
+
+<script>
+
+    var promotores = [];
+    function carregar() {
+        fetch("http://localhost:3000/usuarios")
+            .then(resp => { return resp.json() })
+            .then(lancamento => {
+                promotores = lancamento;
+                listarPromotor();
+            });
+    }
+    const contInfos = document.querySelector(".cont-infos");
+    const contMsg = document.querySelector(".cont-mensagens");
+
+    function listarPromotor() {
+        promotores.forEach(p => {
+            var lista = contInfos.cloneNode(true)
+            lista.style.display = "flex"
+            lista.querySelector('.imgProdutores').src = "../../back/src/" + p.caminhoImagem
+            lista.querySelector('.id-promotor').innerHTML = p.id_usuario
+            lista.querySelector('.nome-promotor').innerHTML = p.raz
+            contMsg.appendChild(lista)
+        })
+    }
+    const messages = document.querySelector('#messages')
+    const contMessages = document.querySelector('.container')
+
+    function exibirMensagem(e) {
+        var img = e.querySelector('.imgProdutores').src
+        var idPromotor = e.querySelector('.id-promotor').innerHTML
+        var nomePromotor = e.querySelector('.nome-promotor').innerHTML
+        const options = { method: 'GET' }
+        console.log(idPromotor)
+        fetch('http://localhost:3000/messagens', options)
+            .then(resp => resp.json())
+            .then(resp => {
+                messages.innerHTML = ""
+                resp.forEach(p => {
+                    if (p.destinatarioId == idPromotor) {
+                        var lista = document.createElement('span')
+                        lista.classList.add('conteudo')
+                        lista.innerHTML = p.conteudo
+                        document.querySelector('.nomePromotor').innerHTML = nomePromotor
+                        document.querySelector('.imgProdutor').src = img
+                        messages.appendChild(lista)
+                    } else {
+                        var lista = document.createElement('span')
+                        lista.classList.add('conteudoRemetente')
+                        lista.innerHTML = p.conteudo
+
+                        messages.appendChild(lista)
+                    }
+
+
+                })
+            })
+
+    }
+    const ws = new WebSocket('ws://localhost:3000/chat');
+
+    ws.onopen = () => {
+        console.log('Conexão estabelecida.');
+    };
+
+    const receivedMessages = new Set();
+
+    ws.onmessage = (event) => {
+        const messagesDiv = document.getElementById('messages');
+        const mensagem = JSON.parse(event.data);
+        const remetenteId = mensagem.remetenteId;
+
+        if (receivedMessages.has(mensagem.id_mensagem)) {
+            return; // Ignorar a mensagem duplicada
+        }
+
+        receivedMessages.add(mensagem.id_mensagem);
+
+        const conteudoSpan = document.createElement('span');
+        conteudoSpan.textContent = mensagem.conteudo;
+
+        if (remetenteId == 2) {
+            conteudoSpan.classList.add('conteudoRemetente');
+            conteudoSpan.style.display = "flex"
+        } else {
+            conteudoSpan.classList.add('conteudo');
+            conteudoSpan.style.display = "flex"
+        }
+
+        messagesDiv.appendChild(conteudoSpan);
+        messagesDiv.scrollTop = messagesDiv.scrollHeight;
+    };
+
+    ws.onclose = () => {
+        console.log('Conexão encerrada.');
+    };
+
+    function sendMessage() {
+        const input = document.getElementById('input');
+        const remetenteId = 2;
+        const destinatarioId = 1;
+        const conteudo = input.value;
+        const data = new Date().toISOString(); // Obtém a data atual em formato ISO string
+
+        const message = {
+            remetenteId,
+            destinatarioId,
+            conteudo,
+            data, // Adiciona a propriedade 'data' com a data atual
+        };
+
+        console.log(message);
+        ws.send(JSON.stringify(message));
+        input.value = '';
+    }
+
+    // Adicionar evento de teclado para o campo de entrada
+    const input = document.getElementById('input');
+    input.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' && input.value != '') {
+            sendMessage();
+        } else {
+            console.log('nada');
+        }
+    });
+
+</script>
+
+
+<script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+
+
+</html>
